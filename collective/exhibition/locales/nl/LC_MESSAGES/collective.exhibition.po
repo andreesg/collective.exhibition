@@ -1,0 +1,1296 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.exhibition\n"
+"POT-Creation-Date: 2015-04-09 15:28+0000\n"
+"PO-Revision-Date: 2015-04-10 15:29+0000’\n"
+"Last-Translator: INTK <info@intk.com>\n"
+"Language-Team: Dutch <info@intk.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: nl\n"
+"Language-Name: Dutch\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: collective.exhibition\n"
+
+#: ../profiles/default/types/Object.xml:7
+msgid "Object"
+msgstr "Objecten"
+
+#: ../profiles/default/types/Object.xml:8
+msgid "Information about an object typically collected by museums"
+msgstr "Informatie over een object meestal verzameld door musea"
+
+#: ../exhibition.py
+msgid "Body"
+msgstr "Tekst"
+
+#: ../exhibition.py
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ../exhibition.py
+msgid "Identification"
+msgstr "Identificatie"
+
+#: ../exhibition.py
+msgid "Institution name"
+msgstr "Instellingnaam"
+
+#: ../exhibition.py
+msgid "Administrative name"
+msgstr "Afdeling"
+
+#: ../exhibition.py
+msgid "Collection"
+msgstr "Collectie"
+
+#: ../exhibition.py
+msgid "Object number"
+msgstr "Objectnummer"
+
+#: ../exhibition.py
+msgid "Rec. type"
+msgstr "Rec. type"
+
+#: ../exhibition.py
+msgid "Part"
+msgstr "Onderdeel"
+
+#: ../exhibition.py
+msgid "Tot. Number"
+msgstr "Aantal"
+
+#: ../exhibition.py
+msgid "Copy number"
+msgstr "Serienummer"
+
+#: ../exhibition.py
+msgid "Edition"
+msgstr "Oplage"
+
+#: ../exhibition.py
+msgid "Distinguish features"
+msgstr "Ondersch. kenmerken"
+
+#: ../exhibition.py
+msgid "Object Category"
+msgstr "Objectcategorie"
+
+#: ../exhibition.py
+msgid "Object name"
+msgstr "Objectnaam"
+
+#: ../exhibition.py
+msgid "Other name"
+msgstr "Ander benaming"
+
+#: ../exhibition.py
+msgid "Physical Characteristics"
+msgstr "Fysieke kenmerken"
+
+#: ../exhibition.py
+msgid "Physical Description"
+msgstr "Fysieke beschrijving"
+
+#: ../exhibition.py
+msgid "Keywords"
+msgstr "Trefwoorden"
+
+#: ../exhibition.py
+msgid "Part"
+msgstr "Onderdeel"
+
+#: ../exhibition.py
+msgid "Aspect"
+msgstr "Aspect"
+
+#: ../exhibition.py
+msgid "Keyword"
+msgstr "Trefwoord"
+
+#: ../exhibition.py
+msgid "Notes"
+msgstr "Bijzonderheden"
+
+#: ../exhibition.py
+msgid "Techniques"
+msgstr "Technieken"
+
+#: ../exhibition.py
+msgid "Technique"
+msgstr "Techniek"
+
+#: ../exhibition.py
+msgid "Materials"
+msgstr "Materialen"
+
+#: ../exhibition.py
+msgid "Material"
+msgstr "Materiaal"
+
+#: ../exhibition.py
+msgid "Dimensions"
+msgstr "Afmetingen"
+
+#: ../exhibition.py
+msgid "Dimention"
+msgstr "Afmeting"
+
+#: ../exhibition.py
+msgid "Value"
+msgstr "Waarde"
+
+#: ../exhibition.py
+msgid "Unit"
+msgstr "Eenh"
+
+#: ../exhibition.py
+msgid "Precision"
+msgstr "Precisie"
+
+#: ../exhibition.py
+msgid "Dimensions (free text)"
+msgstr "Afmeting (vrije tekst)"
+
+#: ../exhibition.py
+msgid "Frame"
+msgstr "Omlijsting"
+
+#: ../exhibition.py
+msgid "Detail"
+msgstr "Bijzonderheden"
+
+#: ../exhibition.py
+msgid "Production & Dating"
+msgstr "Vervaardiging & Datering"
+
+#: ../exhibition.py
+msgid "Creator"
+msgstr "Vervaardiger"
+
+#: ../exhibition.py
+msgid "Maker"
+msgstr "Vervaardiger"
+
+#: ../exhibition.py
+msgid "Qualifier"
+msgstr "Kwalificatie"
+
+#: ../exhibition.py
+msgid "Role"
+msgstr "Rol"
+
+#: ../exhibition.py
+msgid "Place"
+msgstr "Plaats"
+
+#: ../exhibition.py
+msgid "School / style"
+msgstr "School / stijl"
+
+#: ../exhibition.py
+msgid "Production notes"
+msgstr "Bijzonderheden"
+
+#: ../exhibition.py
+msgid "Production reason"
+msgstr "Reden vervaardiging"
+
+#: ../exhibition.py
+msgid "Dating"
+msgstr "Datering"
+
+#: ../exhibition.py
+msgid "Period"
+msgstr "Periode"
+
+#: ../exhibition.py
+msgid "Date (early)"
+msgstr "Datering van"
+
+#: ../exhibition.py
+msgid "Precision"
+msgstr "Precisie"
+
+#: ../exhibition.py
+msgid "Date (late)"
+msgstr "Tot"
+
+#
+# Condition & Conservation
+#
+
+#: ../exhibition.py
+msgid "Condition & Conservation"
+msgstr "Toestand & Conservering"
+
+#: ../exhibition.py
+msgid "Conservation treatment"
+msgstr "Conserveringsprioriteit"
+
+#: ../exhibition.py
+msgid "Priority"
+msgstr "Prioriteit"
+
+#: ../exhibition.py
+msgid "Next condition check"
+msgstr "Volgende toets en controle"
+
+#: ../exhibition.py
+msgid "Date"
+msgstr "Datum"
+
+#: ../exhibition.py
+msgid "Completeness"
+msgstr "Compleetheid"
+
+#: ../exhibition.py
+msgid "Checked by"
+msgstr "Controleur"
+
+#: ../exhibition.py
+msgid "Condition"
+msgstr "Toestand"
+
+#: ../exhibition.py
+msgid "Condition"
+msgstr "Toestand"
+
+#: ../exhibition.py
+msgid "Enviromental condition"
+msgstr "Bewaarvorm"
+
+#: ../exhibition.py
+msgid "Preservation form"
+msgstr "Bewaarvorm"
+
+#: ../exhibition.py
+msgid "Conservation request"
+msgstr "Conserveringverzoeken"
+
+#: ../exhibition.py
+msgid "Treatment"
+msgstr "Behandeling"
+
+#: ../exhibition.py
+msgid "Requester"
+msgstr "Aanvrager"
+
+#: ../exhibition.py
+msgid "Reason"
+msgstr "Reden"
+
+#: ../exhibition.py
+msgid "Status"
+msgstr "Status"
+
+#: ../exhibition.py
+msgid "low"
+msgstr "laag"
+
+#: ../exhibition.py
+msgid "medium"
+msgstr "normal"
+
+#: ../exhibition.py
+msgid "high"
+msgstr "hoog"
+
+#: ../exhibition.py
+msgid "urgent"
+msgstr "urgent"
+
+#
+# Inscriptions and markings
+#
+
+#: ../exhibition.py
+msgid "Inscriptions and markings"
+msgstr "Opschrijven en merken"
+
+#: ../exhibition.py
+msgid "Type"
+msgstr "Soort"
+
+#: ../exhibition.py
+msgid "Position"
+msgstr "Positie"
+
+#: ../exhibition.py
+msgid "Method"
+msgstr "Methode"
+
+#: ../exhibition.py
+msgid "Date"
+msgstr "Datum"
+
+#: ../exhibition.py
+msgid "Role"
+msgstr "Rol"
+
+#: ../exhibition.py
+msgid "Content"
+msgstr "Inhoud"
+
+#: ../exhibition.py
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ../exhibition.py
+msgid "Interpretation"
+msgstr "Interpretatie"
+
+#: ../exhibition.py
+msgid "Language"
+msgstr "Taal"
+
+#: ../exhibition.py
+msgid "Notes"
+msgstr "Bijzonderheden"
+
+#
+# Value & Insurance
+#
+
+#: ../exhibition.py
+msgid "Value & Insurance"
+msgstr "Waarde"
+
+#: ../exhibition.py
+msgid "Valuation"
+msgstr "Waardebepaling"
+
+#: ../exhibition.py
+msgid "Value"
+msgstr "Waarde"
+
+#: ../exhibition.py
+msgid "Curr."
+msgstr "Val."
+
+#: ../exhibition.py
+msgid "Valuer"
+msgstr "Taxateur"
+
+#: ../exhibition.py
+msgid "Insurance"
+msgstr "Verzekering"
+
+#: ../exhibition.py
+msgid "Commercial"
+msgstr "commercieel"
+
+#: ../exhibition.py
+msgid "Indemnity"
+msgstr "indemniteit"
+
+#: ../exhibition.py
+msgid "Policy number"
+msgstr "Polisnummer"
+
+#: ../exhibition.py
+msgid "Insurance company"
+msgstr "Verzekeringsmaatschappij"
+
+#: ../exhibition.py
+msgid "Confirmation date"
+msgstr "Bevestigingsdatum"
+
+#: ../exhibition.py
+msgid "Renewal date"
+msgstr "Verloopdatum"
+
+#: ../exhibition.py
+msgid "Reference"
+msgstr "Referentie"
+
+#: ../exhibition.py
+msgid "Conditions"
+msgstr "Voorwaarden"
+
+#
+# Acquisition
+#
+
+#: ../exhibition.py
+msgid "Acquisition"
+msgstr "Verwerving"
+
+#: ../exhibition.py
+msgid "Accession"
+msgstr "Inschrijving"
+
+#: ../exhibition.py
+msgid "Accession date"
+msgstr "Inschrijvingsdatum"
+
+#: ../exhibition.py
+msgid "Acquisition"
+msgstr "Verwerving"
+
+#: ../exhibition.py
+msgid "Acquisition number"
+msgstr "Verwervingsnummer"
+
+#: ../exhibition.py
+msgid "Acquisition number"
+msgstr "Verwervingsnummer"
+
+#: ../exhibition.py
+msgid "Method"
+msgstr "Methode"
+
+#: ../exhibition.py
+msgid "Rec.no."
+msgstr "Rec.nr."
+
+#: ../exhibition.py
+msgid "Lot no."
+msgstr "Lotnr."
+
+#: ../exhibition.py
+msgid "From"
+msgstr "Van"
+
+#: ../exhibition.py
+msgid "Auction"
+msgstr "Veiling"
+
+#: ../exhibition.py
+msgid "Place"
+msgstr "Plaats"
+
+#: ../exhibition.py
+msgid "Reason"
+msgstr "Reden"
+
+#: ../exhibition.py
+msgid "Conditions"
+msgstr "Voorwaarden"
+
+#: ../exhibition.py
+msgid "Authorization"
+msgstr "Autorisatie"
+
+#: ../exhibition.py
+msgid "Authorizer"
+msgstr "Autorisator"
+
+#: ../exhibition.py
+msgid "Costs"
+msgstr "Kosten"
+
+#: ../exhibition.py
+msgid "Offer price"
+msgstr "Vraagprijs"
+
+#: ../exhibition.py
+msgid "Curr."
+msgstr "Valuta"
+
+#: ../exhibition.py
+msgid "Purchase price"
+msgstr "Aankoopprijs"
+
+#: ../exhibition.py
+msgid "Funding"
+msgstr "Financiering"
+
+#: ../exhibition.py
+msgid "Amount"
+msgstr "Bedrag"
+
+#: ../exhibition.py
+msgid "Source"
+msgstr "Bron"
+
+#: ../exhibition.py
+msgid "Provisos"
+msgstr "Bepalingen"
+
+#: ../exhibition.py
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: ../exhibition.py
+msgid "Reference"
+msgstr "Referentie"
+
+#
+# Disposal
+#
+
+#: ../exhibition.py
+msgid "Disposal"
+msgstr "Afstoting"
+
+#: ../exhibition.py
+msgid "Deaccession"
+msgstr "Uitschrijving"
+
+#: ../exhibition.py
+msgid "Deaccession date"
+msgstr "Uitschrijvingsdatum"
+
+#: ../exhibition.py
+msgid "New object number"
+msgstr "Nieuw objectnummer"
+
+#: ../exhibition.py
+msgid "Disposal"
+msgstr "Afstoting"
+
+#: ../exhibition.py
+msgid "Disposal number"
+msgstr "Afstotingsnummer"
+
+#: ../exhibition.py
+msgid "Proposed recipient"
+msgstr "Aspirant-ontvanger"
+
+#: ../exhibition.py
+msgid "Recipient"
+msgstr "Ontvanger"
+
+#: ../exhibition.py
+msgid "Reason"
+msgstr "Reden"
+
+#: ../exhibition.py
+msgid "Provisos"
+msgstr "Voorwaarden"
+
+#: ../exhibition.py
+msgid "Finance"
+msgstr "Financiën"
+
+#: ../exhibition.py
+msgid "Disposal price"
+msgstr "Verkoopprijs"
+
+#
+# Ownership history
+#
+
+#: ../exhibition.py
+msgid "Ownership history"
+msgstr "Eigendomsgeschiedenis"
+
+#: ../exhibition.py
+msgid "Ownership"
+msgstr "Eigendom"
+
+#: ../exhibition.py
+msgid "Current Owner"
+msgstr "Huidige eigenaar"
+
+#: ../exhibition.py
+msgid "History"
+msgstr "Geschiedenis"
+
+#: ../exhibition.py
+msgid "Owner"
+msgstr "Eigenaar"
+
+#: ../exhibition.py
+msgid "From"
+msgstr "Vanaf"
+
+#: ../exhibition.py
+msgid "Until"
+msgstr "Tot"
+
+#: ../exhibition.py
+msgid "Exchange method"
+msgstr "Verwervingsmethode"
+
+#: ../exhibition.py
+msgid "Acquired from"
+msgstr "Verworven van"
+
+#: ../exhibition.py
+msgid "Auction"
+msgstr "Veiling"
+
+#: ../exhibition.py
+msgid "Price"
+msgstr "Prijs"
+
+#: ../exhibition.py
+msgid "Ownership category"
+msgstr "Eigendomscategorie"
+
+#: ../exhibition.py
+msgid "Access"
+msgstr "Toegankelijkheid"
+
+#
+# Location
+#
+
+#: ../exhibition.py
+msgid "Location"
+msgstr "Standplaats"
+
+#: ../exhibition.py
+msgid "Normal location"
+msgstr "Vaste standplaats"
+
+#: ../exhibition.py
+msgid "Current location"
+msgstr "Huidige locatie"
+
+#: ../exhibition.py
+msgid "Start date"
+msgstr "Begindatum"
+
+#: ../exhibition.py
+msgid "End date"
+msgstr "Einddatum"
+
+#: ../exhibition.py
+msgid "Location type"
+msgstr "Soort standplaats"
+
+#: ../exhibition.py
+msgid "Location"
+msgstr "Standplaats"
+
+#: ../exhibition.py
+msgid "Fitness"
+msgstr "Geschiktheid"
+
+#: ../exhibition.py
+msgid "Location checks"
+msgstr "Standplaatscontroles"
+
+#
+# Notes
+#
+
+#: ../exhibition.py
+msgid "Free Fields"
+msgstr "Vrij Velden"
+
+#: ../exhibition.py
+msgid "Confidential"
+msgstr "Vertrouwelijk"
+
+#
+# Labels
+#
+
+#: ../exhibition.py
+msgid "Labels"
+msgstr "Etiketten"
+
+# Identification
+
+#: ../exhibition.py
+msgid "Translated title"
+msgstr "Vertaalde titel"
+
+#: ../exhibition.py
+msgid "Describer"
+msgstr "Beschrijver"
+
+#: ../exhibition.py
+msgid "Taxonomy"
+msgstr "Taxonomie"
+
+#: ../exhibition.py
+msgid "Taxonomy rank"
+msgstr "Taxonomie rang"
+
+#: ../exhibition.py
+msgid "Scient. name"
+msgstr "Wet. naam"
+
+#: ../exhibition.py
+msgid "Common name"
+msgstr "Populaire naam"
+
+#: ../exhibition.py
+msgid "Determiner"
+msgstr "Determinator"
+
+#: ../exhibition.py
+msgid "Object status"
+msgstr "Objectstatus"
+
+#: ../exhibition.py
+msgid "Title and description"
+msgstr "Titel en beschrijving"
+
+
+#: ../exhibition.py
+msgid "Title and description"
+msgstr "Titel en beschrijving"
+
+#
+# Iconography
+#
+
+#: ../exhibition.py
+msgid "General theme"
+msgstr "Hoofdmotief algemeen"
+
+#: ../exhibition.py
+msgid "Specific theme"
+msgstr "Hoofdmotief specifiek"
+
+#: ../exhibition.py
+msgid "Classification theme"
+msgstr "Classificatieschema"
+
+#: ../exhibition.py
+msgid "Code"
+msgstr "Code"
+
+#: ../exhibition.py
+msgid "General search criteria"
+msgstr "Algemene onderwerpsontsluiting"
+
+#: ../exhibition.py
+msgid "Content description"
+msgstr "Inhoudsbeschrijving"
+
+#: ../exhibition.py
+msgid "Content person/institution"
+msgstr "Afgebeelde persoon/instelling"
+
+#: ../exhibition.py
+msgid "Name type"
+msgstr "Soort naam"
+
+#: ../exhibition.py
+msgid "Content subject"
+msgstr "Afgebeeld onderwerp"
+
+#: ../exhibition.py
+msgid "Subject type"
+msgstr "Soort onderwerp"
+
+#: ../exhibition.py
+msgid "Subject"
+msgstr "Naam"
+
+#: ../exhibition.py
+msgid "Taxonomic rank"
+msgstr "Taxonomische rang"
+
+#: ../exhibition.py
+msgid "Scientific name"
+msgstr "Wet. Naam"
+
+#: ../exhibition.py
+msgid "Proper name"
+msgstr "Eigennaam"
+
+#: ../exhibition.py
+msgid "Identifier"
+msgstr "Identifier"
+
+#: ../exhibition.py
+msgid "Content period/date"
+msgstr "Content period/date"
+
+#: ../exhibition.py
+msgid "Iconography source"
+msgstr "Iconografisch bron"
+
+#: ../exhibition.py
+msgid "Source general"
+msgstr "Bron algemeen"
+
+#: ../exhibition.py
+msgid "Source specific"
+msgstr "Bron specifiek"
+
+#: ../exhibition.py
+msgid "Source object number"
+msgstr "Bron objectnummer"
+
+#: ../exhibition.py
+msgid "Iconography"
+msgstr "Iconografie"
+
+#: ../exhibition.py
+msgid "Content period/date"
+msgstr "Afgebeelde periode/datum"
+
+#
+# Inscriptions
+#
+
+#: ../exhibition.py
+msgid "Script"
+msgstr "Schrijt"
+
+#: ../exhibition.py
+msgid "Transliteration"
+msgstr "Transliteratie"
+
+
+#
+# Associations
+#
+
+#: ../exhibition.py
+msgid "Associated person/institution"
+msgstr "Geassocieerde persoon/instelling"
+
+#: ../exhibition.py
+msgid "Association"
+msgstr "Associatie"
+
+#: ../exhibition.py
+msgid "Associated subject"
+msgstr "Geassocieerd onderwerp"
+
+#: ../exhibition.py
+msgid "Associated period"
+msgstr "Geassocieerde periode"
+
+#: ../exhibition.py
+msgid "Associations"
+msgstr "Associaties"
+
+#
+# Numbers/relationships
+#
+
+#: ../exhibition.py
+msgid "Numbers/relationships"
+msgstr "Nummers/relaties"
+
+#: ../exhibition.py
+msgid "Numbers"
+msgstr "Nummers"
+
+#: ../exhibition.py
+msgid "Institution"
+msgstr "Instelling"
+
+#: ../exhibition.py
+msgid "Number"
+msgstr "Nummer"
+
+#: ../exhibition.py
+msgid "Relationships with other objects"
+msgstr "Relaties met andere objecten"
+
+#: ../exhibition.py
+msgid "Part of"
+msgstr "Is deel van"
+
+#: ../exhibition.py
+msgid "Parts"
+msgstr "Heeft als deel"
+
+#: ../exhibition.py
+msgid "Related object"
+msgstr "Gerelateerd object"
+
+#: ../exhibition.py
+msgid "Digital references"
+msgstr "Digitale referenties"
+
+#: ../exhibition.py
+msgid "Title"
+msgstr "Titel"
+
+#: ../exhibition.py
+msgid "Page mark"
+msgstr "Pagina-aanduiding"
+
+#: ../exhibition.py
+msgid "Author"
+msgstr "Auteur"
+
+#: ../exhibition.py
+msgid "Shelf mark"
+msgstr "Signatuur"
+
+#
+# Documentation (free) / archive
+#
+
+#: ../exhibition.py
+msgid "Documentation (free) / archive"
+msgstr "Documentatie (vrij) / archief"
+
+#: ../exhibition.py
+msgid "Documentation (free text)"
+msgstr "Documentatie (vrij tekst)"
+
+#: ../exhibition.py
+msgid "Archive"
+msgstr "Archief"
+
+#: ../exhibition.py
+msgid "Archive number"
+msgstr "Archiefnummer"
+
+
+#
+# Reproductions
+#
+
+#: ../exhibition.py
+msgid "Reproductions"
+msgstr "Reproducties"
+
+#: ../exhibition.py
+msgid "Reproduction"
+msgstr "Reproductie"
+
+#: ../exhibition.py
+msgid "Reference"
+msgstr "Referentie"
+
+#: ../exhibition.py
+msgid "Format"
+msgstr "Formaat"
+
+#: ../exhibition.py
+msgid "Identifier (URL)"
+msgstr "Identifier (URL)"
+
+#
+# Recommendations/requirements
+#
+
+#: ../exhibition.py
+msgid "Recommendations/requirements"
+msgstr "Aanbevelingen / vereisten"
+
+#: ../exhibition.py
+msgid "Recommendations"
+msgstr "Aanbevelingen"
+
+#: ../exhibition.py
+msgid "Display"
+msgstr "Tentoonstelling"
+
+#: ../exhibition.py
+msgid "Enviroment"
+msgstr "Omgeving"
+
+#: ../exhibition.py
+msgid "Handling"
+msgstr "Behandeling"
+
+#: ../exhibition.py
+msgid "Packing"
+msgstr "Verpakking"
+
+#: ../exhibition.py
+msgid "Security"
+msgstr "Veiligheid"
+
+#: ../exhibition.py
+msgid "Security"
+msgstr "Veiligheid"
+
+#: ../exhibition.py
+msgid "Storage"
+msgstr "Berging"
+
+#: ../exhibition.py
+msgid "Legal / license requirements"
+msgstr "Wettelijke eisen / vergunningen"
+
+#: ../exhibition.py
+msgid "Requirements"
+msgstr "Eisen"
+
+#: ../exhibition.py
+msgid "Requirements held"
+msgstr "Vereisten in Bezit"
+
+#: ../exhibition.py
+msgid "Current From"
+msgstr "Geldig van"
+
+#
+# Field collection
+#
+
+#: ../exhibition.py
+msgid "Field Collection"
+msgstr "Vondstomstandigheden"
+
+#: ../exhibition.py
+msgid "Field coll. number"
+msgstr "Vondstnummer"
+
+#: ../exhibition.py
+msgid "Collector"
+msgstr "Vinder"
+
+#: ../exhibition.py
+msgid "Event"
+msgstr "Gebeurtenis"
+
+#: ../exhibition.py
+msgid "Date (early)"
+msgstr "Begindatum"
+
+
+#: ../exhibition.py
+msgid "Date (late)"
+msgstr "Einddatum"
+
+#: ../exhibition.py
+msgid "Method"
+msgstr "Methode"
+
+#: ../exhibition.py
+msgid "Place"
+msgstr "Vindplaats"
+
+#: ../exhibition.py
+msgid "Place code"
+msgstr "Code vindplaats"
+
+#: ../exhibition.py
+msgid "Place feature"
+msgstr "Kenmerk vindplaats"
+
+#: ../exhibition.py
+msgid "Co-ordinates field collection place"
+msgstr "Coördnaten vindplaats"
+
+#: ../exhibition.py
+msgid "Grid type"
+msgstr "Coördinatenstelsel"
+
+#: ../exhibition.py
+msgid "X co-ordinate"
+msgstr "X-coördnaat"
+
+#: ../exhibition.py
+msgid "Addition"
+msgstr "Toevoeging"
+
+#: ../exhibition.py
+msgid "Y co-ordinate"
+msgstr "Y-coördnaat"
+
+#: ../exhibition.py
+msgid "Habitat and stratigraphy"
+msgstr "Milieu en stratigrafie"
+
+#: ../exhibition.py
+msgid "Habitat"
+msgstr "Landschap/milieu"
+
+#: ../exhibition.py
+msgid "Stratigraphy"
+msgstr "Stratigrafie"
+
+#: ../exhibition.py
+msgid "Strat. type"
+msgstr "Soort strat."
+
+#
+# Exhibitions
+#
+
+#: ../exhibition.py
+msgid "Exhibitions"
+msgstr "Tentoonstellingen"
+
+#: ../exhibition.py
+msgid "Exhibition"
+msgstr "Tentoonstelling"
+
+
+#: ../exhibition.py
+msgid "Exhibition name"
+msgstr "Tentoonstellingsnaam"
+
+#: ../exhibition.py
+msgid "to"
+msgstr "t/m"
+
+#: ../exhibition.py
+msgid "Venue"
+msgstr "Locatie"
+
+#: ../exhibition.py
+msgid "Cat. no. object"
+msgstr "Cat.nr. object"
+
+#
+# Loans
+#
+
+#: ../exhibition.py
+msgid "Loans"
+msgstr "Bruiklenen"
+
+#: ../exhibition.py
+msgid "Incoming loans"
+msgstr "Inkomende bruiklenen"
+
+#: ../exhibition.py
+msgid "Outgoing loans"
+msgstr "Uitgaande bruiklenen"
+
+#: ../exhibition.py
+msgid "Loan number"
+msgstr "Bruikleennummer"
+
+#: ../exhibition.py
+msgid "Lender"
+msgstr "Bruikleengever"
+
+#: ../exhibition.py
+msgid "Requester"
+msgstr "Aanvrager"
+
+#: ../exhibition.py
+msgid "Request reason"
+msgstr "Reden aanvraag"
+
+#: ../exhibition.py
+msgid "Request period"
+msgstr "Aaanvraagperiode"
+
+#: ../exhibition.py
+msgid "Contract period"
+msgstr "Contractperiode"
+
+#: ../exhibition.py
+msgid "Contact"
+msgstr "Contactpersoon"
+
+#
+# Exhibitions details
+#
+
+#: ../exhibition.py
+msgid "Exhibition"
+msgstr "Tentoonstelling"
+
+#: ../exhibition.py
+msgid "Alt. Title"
+msgstr "Alt. Titel"
+
+#: ../exhibition.py
+msgid "Organizing institutions"
+msgstr "Organiserende instelling"
+
+#: ../exhibition.py
+msgid "Name"
+msgstr "Naam"
+
+#: ../exhibition.py
+msgid "Address"
+msgstr "Adres"
+
+#: ../exhibition.py
+msgid "Country"
+msgstr "Land"
+
+#: ../exhibition.py
+msgid "Telephone"
+msgstr "Telefoon"
+
+#: ../exhibition.py
+msgid "Exhibitions details"
+msgstr "Tentoonstelling"
+
+
+#: ../exhibition.py
+msgid "label_event_start"
+msgstr "Aanvang"
+
+#: ../exhibition.py
+msgid "label_event_end"
+msgstr "Einde"
+
+#: ../exhibition.py
+msgid "Article"
+msgstr "Lidword"
+
+#: ../exhibition.py
+msgid "Linked Objects"
+msgstr "Gekoppelde objecten"
+
+#: ../exhibition.py
+msgid "Itinerary"
+msgstr "Agenda"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

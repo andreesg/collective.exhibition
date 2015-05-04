@@ -1,0 +1,89 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.exhibition">
+
+  <!-- Include configuration for dependencies listed in setup.py -->
+  
+  <includeDependencies package="." />
+
+  <!-- Grok the package to initialize schema interfaces and content classes -->
+  <grok:grok package="." />
+
+  <!-- Register a resource directory from which we can deploy static
+   resource files. -->
+  <browser:resourceDirectory
+    name="collective.exhibition"
+    directory="resources" />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <!-- Register an extension profile to make the product installable
+       in Plone -->
+  <genericsetup:registerProfile
+      name="default"
+      title="Exhibition"
+      directory="profiles/default"
+      description="Information about an Exhibition"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+    
+  <browser:page
+        name="view"
+        for="collective.exhibition.exhibition.IExhibition"
+        class="collective.exhibition.exhibition.ExhibitionView"
+        template="exhibition_templates/view.pt"
+        permission="zope2.View"
+        />
+
+
+  <!-- Custom Edit form -->
+  <browser:page
+    name="edit"
+    for="collective.exhibition.exhibition.IExhibition"
+    class="collective.exhibition.exhibition.EditForm"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <!-- Custom Add form -->
+  <adapter
+    for="Products.CMFCore.interfaces.IFolderish
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         plone.dexterity.interfaces.IDexterityFTI"
+    provides="zope.publisher.interfaces.browser.IBrowserPage"
+    factory=".exhibition.AddView"
+    name="collective.exhibition.exhibition"
+  />
+  
+  <class class=".exhibition.AddForm">
+    <require
+        permission="cmf.AddPortalContent"
+        interface="zope.publisher.interfaces.browser.IBrowserPage"
+        />
+  </class>
+
+  <!-- Custom plone form widget -->
+  <browser:page
+    name="ploneform-render-widget"
+    for=".exhibition.IFormWidget"
+    class="plone.app.z3cform.templates.RenderWidget"
+    permission="zope.Public"
+    template="exhibition_templates/widget.pt"
+  />
+
+  <!-- Custom Add and Edit form macro -->
+  <browser:page
+      for="*"
+      name="collective.exhibition.fieldsetmacro"
+      template="exhibition_templates/fieldsetmacro.pt"
+      permission="zope.Public"
+    />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+</configure>
