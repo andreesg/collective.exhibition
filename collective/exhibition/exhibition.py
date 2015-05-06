@@ -28,6 +28,11 @@ from z3c.form.form import extends
 from z3c.form.browser.textlines import TextLinesFieldWidget
 
 #
+# plone.app.widgets dependencies
+#
+from plone.app.widgets.dx import DatetimeFieldWidget
+
+#
 # DataGridFields dependencies
 #
 from collective.z3cform.datagridfield import DataGridFieldFactory, DictRow
@@ -63,13 +68,15 @@ class IExhibition(form.Schema):
         required=False
     )
     dexteritytextindexer.searchable('start_date')
+    form.widget(start_date=DatetimeFieldWidget)
 
     end_date = schema.Datetime(
         title=_(u'label_event_end' ,default=u'Event Ends'),
         required=False
     )
     dexteritytextindexer.searchable('end_date')
-
+    form.widget(end_date=DatetimeFieldWidget)
+    
     text = RichText(
         title=_(u"Body"),
         required=False
