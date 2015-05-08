@@ -57,11 +57,15 @@
     <!-- Linked Objects -->
     <div class="row no-padding">
         <h2 class="page-header" i18n:translate="">Linked Objects</h2>
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/linkedObjects_relatedItems/@@ploneform-render-widget"/>
+        </div>
 
+        <h2 class="page-header" i18n:translate="">Linked Objects</h2>
         <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/linkedObjects_linkedObjects/@@ploneform-render-widget"/>
         </div>
     </div>
   </tal:linked_objects>
-  
+
 </div>

@@ -26,11 +26,13 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from z3c.form import group, field
 from z3c.form.form import extends
 from z3c.form.browser.textlines import TextLinesFieldWidget
+from z3c.relationfield.schema import RelationChoice
+from z3c.relationfield.schema import RelationList
 
 #
 # plone.app.widgets dependencies
 #
-#from plone.app.widgets.dx import DatetimeFieldWidget
+from plone.app.widgets.dx import DatetimeFieldWidget, RelatedItemsFieldWidget
 
 #
 # DataGridFields dependencies
@@ -68,14 +70,14 @@ class IExhibition(form.Schema):
         required=False
     )
     dexteritytextindexer.searchable('start_date')
-    #form.widget(start_date=DatetimeFieldWidget)
+    form.widget(start_date=DatetimeFieldWidget)
 
     end_date = schema.Datetime(
         title=_(u'label_event_end' ,default=u'Event Ends'),
         required=False
     )
     dexteritytextindexer.searchable('end_date')
-    #form.widget(end_date=DatetimeFieldWidget)
+    form.widget(end_date=DatetimeFieldWidget)
     
     text = RichText(
         title=_(u"Body"),
@@ -155,9 +157,23 @@ class IExhibition(form.Schema):
     # # # # # # # # # # #
     # Linked objects    #
     # # # # # # # # # # #
+
     model.fieldset('linked_objects', label=_(u'Linked Objects'), 
-        fields=['linkedObjects_linkedObjects']
+        fields=['linkedObjects_linkedObjects', 'linkedObjects_relatedItems']
     )
+
+    linkedObjects_relatedItems = RelationList(
+        title=_(u'label_related_items', default=u'Related Items'),
+        default=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            vocabulary="plone.app.vocabularies.Catalog"
+        ),
+        required=False
+    )
+    form.widget('linkedObjects_relatedItems', RelatedItemsFieldWidget,
+                vocabulary='plone.app.vocabularies.Catalog')
+
 
     linkedObjects_linkedObjects = ListField(title=_(u'Linked Objects'),
         value_type=DictRow(title=_(u'Linked Objects'), schema=ILinkedObjects),
