@@ -17,12 +17,8 @@
         </div>
 
         <div class="form-horizontal">
-          <div class="col-sm-12 col-md-6 col-lg-6 padding-right div-50">
-            <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_startDate/@@ploneform-render-widget"/>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-6 div-20-80 label-right">
-            <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_endDate/@@ploneform-render-widget"/>
-          </div>
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_startDate/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_endDate/@@ploneform-render-widget"/>
         </div>
 
         <h2 class="page-header" i18n:translate="">Organizing institutions</h2>
@@ -33,7 +29,7 @@
 
         <h2 class="page-header" i18n:translate="">Itinerary</h2>
 
-        <div class="form-horizontal gridfield">
+        <div class="form-horizontal gridfield table-responsive">
           <tal:widget tal:replace="structure widgets/exhibitionsDetails_itinerary/@@ploneform-render-widget"/>
         </div>
 
