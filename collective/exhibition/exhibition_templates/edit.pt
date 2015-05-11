@@ -136,7 +136,7 @@
                                             tal:content="structure error/render"
                                             />
                                     </tal:block>
-
+                                    
                                     <tal metal:use-macro="view/context/@@collective.exhibition.fieldsetmacro/test" />
 
                                   </fieldset>

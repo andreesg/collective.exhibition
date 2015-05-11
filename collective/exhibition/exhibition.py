@@ -108,17 +108,19 @@ class IExhibition(form.Schema):
     form.widget(exhibitionsDetails_exhibition_altTitle=DataGridFieldFactory)
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_altTitle')
 
-    exhibitionsDetails_exhibition_startDate = schema.TextLine(
+    exhibitionsDetails_exhibition_startDate = schema.Datetime(
         title=_(u'Start date'),
         required=False
     )
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_startDate')
+    form.widget(exhibitionsDetails_exhibition_startDate=DatetimeFieldWidget)
 
-    exhibitionsDetails_exhibition_endDate = schema.TextLine(
+    exhibitionsDetails_exhibition_endDate = schema.Datetime(
         title=_(u'End date'),
         required=False
     )
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_endDate')
+    form.widget(exhibitionsDetails_exhibition_endDate=DatetimeFieldWidget)
 
     exhibitionsDetails_exhibition_notes = schema.TextLine(
         title=_(u'Notes'),
