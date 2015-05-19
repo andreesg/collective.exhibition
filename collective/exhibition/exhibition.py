@@ -170,12 +170,10 @@ class IExhibition(form.Schema):
         default=[],
         value_type=RelationChoice(
             title=u"Related",
-            vocabulary="plone.app.vocabularies.Catalog"
+            source=ObjPathSourceBinder()
         ),
         required=False
     )
-    form.widget('linkedObjects_relatedItems', RelatedItemsFieldWidget,
-               vocabulary='plone.app.vocabularies.Catalog')
 
 
     linkedObjects_linkedObjects = ListField(title=_(u'Linked Objects'),
