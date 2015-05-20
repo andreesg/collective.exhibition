@@ -28,7 +28,9 @@ from z3c.form.form import extends
 from z3c.form.browser.textlines import TextLinesFieldWidget
 from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
-from plone.formwidget.contenttree import ObjPathSourceBinder
+#from plone.formwidget.contenttree import ObjPathSourceBinder
+
+from .utils.source import ObjPathSourceBinder
 
 #
 # plone.app.widgets dependencies
