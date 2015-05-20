@@ -7,20 +7,20 @@
 
     <!-- Exhibitions details -->
     <div class="row no-padding">
-        <h2 class="page-header" i18n:translate="">Exhibition</h2>
+        <!--<h2 class="page-header" i18n:translate="">Exhibition</h2>-->
 
-        <div class="form-horizontal">
+        <!--<div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_title/@@ploneform-render-widget"/>
-        </div>
+        </div>-->
         
-        <div class="form-horizontal gridfield show-label hide-th">
+        <!--<div class="form-horizontal gridfield show-label hide-th">
           <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_altTitle/@@ploneform-render-widget"/>
-        </div>
+        </div>-->
 
-        <div class="form-horizontal">
+        <!--<div class="form-horizontal">
           <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_startDate/@@ploneform-render-widget"/>
           <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_endDate/@@ploneform-render-widget"/>
-        </div>
+        </div>-->
 
         <h2 class="page-header" i18n:translate="">Organizing institutions</h2>
 

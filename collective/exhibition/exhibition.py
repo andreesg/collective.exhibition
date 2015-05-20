@@ -66,6 +66,12 @@ from .utils.views import *
 
 class IExhibition(form.Schema):
 
+    exhibitionsDetails_exhibition_altTitle = ListField(title=_(u'Alt. Title'),
+        value_type=DictRow(title=_(u'Alt. Title'), schema=IAltTitle),
+        required=False)
+    form.widget(exhibitionsDetails_exhibition_altTitle=DataGridFieldFactory)
+    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_altTitle')
+
     start_date = schema.Datetime(
         title=_(u'label_event_start', default=u'Event Starts'),
         required=False
@@ -89,24 +95,19 @@ class IExhibition(form.Schema):
     # Exhibitions details   #
     # # # # # # # # # # # # #
     model.fieldset('exhibitions_details', label=_(u'Exhibitions details'), 
-        fields=['exhibitionsDetails_exhibition_title', 'exhibitionsDetails_exhibition_altTitle',
-                'exhibitionsDetails_exhibition_startDate', 'exhibitionsDetails_exhibition_endDate',
+        fields=['exhibitionsDetails_exhibition_startDate', 'exhibitionsDetails_exhibition_endDate',
                 'exhibitionsDetails_exhibition_notes', 'exhibitionsDetails_organizingInstitutions',
                 'exhibitionsDetails_itinerary']
     )
 
     # Exhibition
-    exhibitionsDetails_exhibition_title = schema.TextLine(
+    """exhibitionsDetails_exhibition_title = schema.TextLine(
         title=_(u'Title'),
         required=False
     )
-    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_title')
+    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_title')"""
 
-    exhibitionsDetails_exhibition_altTitle = ListField(title=_(u'Alt. Title'),
-        value_type=DictRow(title=_(u'Alt. Title'), schema=IAltTitle),
-        required=False)
-    form.widget(exhibitionsDetails_exhibition_altTitle=DataGridFieldFactory)
-    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_altTitle')
+    
 
     exhibitionsDetails_exhibition_startDate = schema.TextLine(
         title=_(u'Start date'),
@@ -175,7 +176,6 @@ class IExhibition(form.Schema):
         required=False
     )
 
-
     linkedObjects_linkedObjects = ListField(title=_(u'Linked Objects'),
         value_type=DictRow(title=_(u'Linked Objects'), schema=ILinkedObjects),
         required=False)
@@ -214,5 +214,11 @@ class EditForm(edit.DefaultEditForm):
         super(EditForm, self).update()
         for group in self.groups:
             for widget in group.widgets.values():
+                if widget.__name__ in ['linkedObjects_linkedObjects', 'exhibitionsDetails_itinerary', 'exhibitionsDetails_organizingInstitutions']:
+                    widget.auto_append = False
                 alsoProvides(widget, IFormWidget)
+
+
+
+
 
