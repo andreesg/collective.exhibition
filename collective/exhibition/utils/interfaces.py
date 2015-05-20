@@ -34,7 +34,7 @@ class IOrganizingInstitutions(Interface):
     name = schema.TextLine(title=_(u'Name'), required=False)
     address = schema.TextLine(title=_(u'Address'), required=False)
     postalCode = schema.TextLine(title=_(u'Postal code'), required=False)
-    place = schema.TextLine(title=_(u'Place'), required=False)
+    place = schema.TextLine(title=_(u'label_place', default=u'Place'), required=False)
     country = schema.TextLine(title=_(u'Country'), required=False)
     telephone = schema.TextLine(title=_(u'Telephone'), required=False)
     fax = schema.TextLine(title=_(u'Fax'), required=False)

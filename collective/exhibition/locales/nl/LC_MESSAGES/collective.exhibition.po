@@ -1226,7 +1226,13 @@ msgstr "Gekoppelde objecten"
 msgid "Itinerary"
 msgstr "Agenda"
 
+#: ../exhibition.py
+msgid "Postcode code"
+msgstr "Agenda"
 
+#: ../exhibition.py
+msgid "label_place"
+msgstr "Plaats"
 
 
 
