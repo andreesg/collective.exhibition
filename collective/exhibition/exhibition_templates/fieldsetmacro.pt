@@ -58,10 +58,10 @@
           <tal:widget tal:replace="structure widgets/linkedObjects_relatedItems/@@ploneform-render-widget"/>
         </div>
 
-        <h2 class="page-header" i18n:translate="">Linked Objects</h2>
+        <!--<h2 class="page-header" i18n:translate="">Linked Objects</h2>
         <div class="form-horizontal gridfield table-responsive">
           <tal:widget tal:replace="structure widgets/linkedObjects_linkedObjects/@@ploneform-render-widget"/>
-        </div>
+        </div>-->
     </div>
   </tal:linked_objects>
 
