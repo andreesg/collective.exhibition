@@ -29,7 +29,6 @@
         </div>
 
         <h2 class="page-header" i18n:translate="">Itinerary</h2>
-
         <div class="form-horizontal gridfield table-responsive">
           <tal:widget tal:replace="structure widgets/exhibitionsDetails_itinerary/@@ploneform-render-widget"/>
         </div>

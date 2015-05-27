@@ -200,9 +200,12 @@ class Exhibition(Container):
 class AddForm(add.DefaultAddForm):
     template = ViewPageTemplateFile('exhibition_templates/add.pt')
     def update(self):
-        super(AddForm, self).update()
+        super(EditForm, self).update()
         for group in self.groups:
             for widget in group.widgets.values():
+                if widget.__name__ in ['linkedObjects_linkedObjects', 'exhibitionsDetails_itinerary', 'exhibitionsDetails_organizingInstitutions']:
+                    widget.auto_append = False
+                    widget.allow_reorder = True
                 alsoProvides(widget, IFormWidget)
 
 class AddView(add.DefaultAddView):
@@ -218,6 +221,7 @@ class EditForm(edit.DefaultEditForm):
             for widget in group.widgets.values():
                 if widget.__name__ in ['linkedObjects_linkedObjects', 'exhibitionsDetails_itinerary', 'exhibitionsDetails_organizingInstitutions']:
                     widget.auto_append = False
+                    widget.allow_reorder = True
                 alsoProvides(widget, IFormWidget)
 
 
