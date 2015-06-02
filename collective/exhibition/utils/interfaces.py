@@ -38,6 +38,7 @@ class IOrganizingInstitutions(Interface):
     country = schema.TextLine(title=_(u'Country'), required=False)
     telephone = schema.TextLine(title=_(u'Telephone'), required=False)
     fax = schema.TextLine(title=_(u'Fax'), required=False)
+    linkref = schema.TextLine(title=_(u'Reference'), required=False, default=u'')
 
 class IItinerary(Interface):
     startDate = schema.TextLine(title=_(u'Start date'), required=False)

@@ -99,7 +99,7 @@ class IExhibition(form.Schema):
     model.fieldset('exhibitions_details', label=_(u'Exhibitions details'), 
         fields=['exhibitionsDetails_exhibition_startDate', 'exhibitionsDetails_exhibition_endDate',
                 'exhibitionsDetails_exhibition_notes', 'exhibitionsDetails_organizingInstitutions',
-                'exhibitionsDetails_itinerary']
+                'exhibitionsDetails_organizingInstitution', 'exhibitionsDetails_itinerary']
     )
 
     # Exhibition
@@ -130,6 +130,17 @@ class IExhibition(form.Schema):
         required=False
     )
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_notes')
+
+    # New organising institutions field
+    exhibitionsDetails_organizingInstitution = RelationList(
+        title=_(u'Organizing institutions'),
+        default=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder()
+        ),
+        required=False
+    )
 
     # Organizing institutions
     exhibitionsDetails_organizingInstitutions = ListField(title=_(u'Organizing institutions'),

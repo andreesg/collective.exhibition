@@ -23,6 +23,11 @@
         </div>-->
 
         <h2 class="page-header" i18n:translate="">Organizing institutions</h2>
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_organizingInstitution/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Organizing institutions</h2>
 
         <div class="form-horizontal gridfield">
           <tal:widget tal:replace="structure widgets/exhibitionsDetails_organizingInstitutions/@@ploneform-render-widget"/>
