@@ -93,6 +93,12 @@ class IExhibition(form.Schema):
         required=False
     )
 
+    priref = schema.TextLine(
+        title=_(u'priref'),
+        required=False
+    )
+    
+
     # # # # # # # # # # # # #
     # Exhibitions details   #
     # # # # # # # # # # # # #
