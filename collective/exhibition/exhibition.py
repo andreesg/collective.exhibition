@@ -217,7 +217,7 @@ class Exhibition(Container):
 class AddForm(add.DefaultAddForm):
     template = ViewPageTemplateFile('exhibition_templates/add.pt')
     def update(self):
-        super(EditForm, self).update()
+        super(AddForm, self).update()
         for group in self.groups:
             for widget in group.widgets.values():
                 if widget.__name__ in ['linkedObjects_linkedObjects', 'exhibitionsDetails_itinerary', 'exhibitionsDetails_organizingInstitutions']:
