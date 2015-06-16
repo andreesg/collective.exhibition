@@ -190,7 +190,7 @@ class IExhibition(form.Schema):
         default=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder()
+            source=ObjPathSourceBinder(portal_type='Object')
         ),
         required=False
     )
