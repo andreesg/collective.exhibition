@@ -6,6 +6,18 @@ from zope.interface import Interface
 from collective.exhibition import MessageFactory as _
 from ..utils.vocabularies import _createPriorityVocabulary, _createInsuranceTypeVocabulary
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
+from z3c.relationfield.schema import RelationChoice
+from z3c.relationfield.schema import RelationList
+from plone.directives import dexterity, form
+
+from collective.object.utils.source import ObjPathSourceBinder
+from collective.object.utils.variables import *
+from collective.object.utils.widgets import AjaxSingleSelectFieldWidget
+
+from z3c.relationfield.schema import RelationChoice
+from z3c.relationfield.schema import RelationList
+from collective.object.utils.widgets import SimpleRelatedItemsFieldWidget
+from plone.directives import dexterity, form
 
 priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
 insurance_type_vocabulary = SimpleVocabulary(list(_createInsuranceTypeVocabulary()))
@@ -27,41 +39,92 @@ class IFormWidget(Interface):
 # DataGrid interfaces     # 
 # # # # # # # # # # # # # #
 
+
+class INotes(Interface):
+    note = schema.Text(title=_(u'Notes'), required=False)
+
 class IAltTitle(Interface):
-    title = schema.TextLine(title=_(u'Title'), required=False)
+    title = schema.TextLine(title=_(u'Alt. Title'), required=False)
+    type = schema.TextLine(title=_(u'Type'), required=False)
 
 class IOrganizingInstitutions(Interface):
-    name = schema.TextLine(title=_(u'Name'), required=False)
-    address = schema.TextLine(title=_(u'Address'), required=False)
-    postalCode = schema.TextLine(title=_(u'Postal code'), required=False)
-    place = schema.TextLine(title=_(u'label_place', default=u'Place'), required=False)
-    country = schema.TextLine(title=_(u'Country'), required=False)
-    telephone = schema.TextLine(title=_(u'Telephone'), required=False)
-    fax = schema.TextLine(title=_(u'Fax'), required=False)
-    linkref = schema.TextLine(title=_(u'Reference'), required=False, default=u'')
+    name = RelationList(
+        title=_(u'Name'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+        ),
+        required=False
+    )
+    form.widget('name', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
+
+    #address = schema.TextLine(title=_(u'Address'), required=False)
+    #postalCode = schema.TextLine(title=_(u'Postal code'), required=False)
+    #place = schema.TextLine(title=_(u'label_place', default=u'Place'), required=False)
+    #country = schema.TextLine(title=_(u'Country'), required=False)
+    #telephone = schema.TextLine(title=_(u'Telephone'), required=False)
+    #fax = schema.TextLine(title=_(u'Fax'), required=False)
+    #linkref = schema.TextLine(title=_(u'Reference'), required=False, default=u'')
 
 class IItinerary(Interface):
     startDate = schema.TextLine(title=_(u'Start date'), required=False)
     endDate = schema.TextLine(title=_(u'End date'), required=False)
-    venue = schema.TextLine(title=_(u'Venue'), required=False)
-    place = schema.TextLine(title=_(u'Place'), required=False)
-    notes = schema.TextLine(title=_(u'Notes'), required=False)
+    venue = RelationList(
+        title=_(u'Venue'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type="PersonOrInstitution")
+        ),
+        required=False
+    )
+    form.widget('venue', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
+
+    form.widget('place', AjaxSingleSelectFieldWidget,  vocabulary="collective.exhibition.places")
+    place = schema.List(
+        title=_(u'label_place', default=u'Place'),
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=[]
+    )
+
+    notes = schema.Text(title=_(u'Notes'), required=False)
      
 ## Documentation
 class IDocumentationDocumentation(Interface):
     article = schema.TextLine(title=_(u'Article'), required=False)
-    title = schema.TextLine(title=_(u'Title'), required=False)
-    author = schema.TextLine(title=_(u'Author'), required=False)
+    title = RelationList(
+        title=_(u'Title'),
+        default=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder()
+        ),
+        required=False
+    )
+    form.widget('title', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
+
+    #author = schema.TextLine(title=_(u'Author'), required=False)
     pageMark = schema.TextLine(title=_(u'Page mark'), required=False)
     shelfMark = schema.TextLine(title=_(u'Shelf mark'), required=False)
-    notes = schema.TextLine(title=_(u'Notes'), required=False)
+    notes = schema.Text(title=_(u'Notes'), required=False)
 
 ## Linked Objects
 class ILinkedObjects(Interface):
-    objectNumber = schema.TextLine(title=_(u'Object number'), required=False)
-    creator = schema.TextLine(title=_(u'Creator'), required=False)
-    objectName = schema.TextLine(title=_(u'Object name'), required=False)
-    title = schema.TextLine(title=_(u'Title'), required=False)
+    objectNumber = RelationList(
+        title=_(u'Title'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type="Object")
+        ),
+        required=False
+    )
+    form.widget('objectNumber', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     
 

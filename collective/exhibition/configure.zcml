@@ -84,6 +84,19 @@
       permission="zope.Public"
     />
 
+
+  <adapter for=".exhibition.IExhibition"
+    provides=".exhibition.INameFromPersonNames"
+    factory=".exhibition.NameFromPersonNames"
+    />
+
   <!-- -*- extra stuff goes here -*- -->
+
+  <adapter name="exhibitionsDetails_itinerary_place" factory=".utils.indexers.exhibitionsDetails_itinerary_place" />
+
+  <utility
+    component=".utils.vocabularies.PlaceVocabularyFactory"
+    name="collective.exhibition.places"
+    />
 
 </configure>

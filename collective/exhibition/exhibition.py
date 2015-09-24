@@ -30,7 +30,7 @@ from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
 #from plone.formwidget.contenttree import ObjPathSourceBinder
 
-from .utils.source import ObjPathSourceBinder
+from collective.object.utils.source import ObjPathSourceBinder
 
 #
 # plone.app.widgets dependencies
@@ -60,33 +60,31 @@ from .utils.vocabularies import *
 from .utils.interfaces import *
 from .utils.views import *
 
+from collective.object.utils.widgets import AjaxSingleSelectFieldWidget
+from collective.z3cform.datagridfield.interfaces import IDataGridField
+
 # # # # # # # # # # # # #
 # # # # # # # # # # # # #
 # Exhibition schema     #
 # # # # # # # # # # # # #
 # # # # # # # # # # # # #
 
+from plone.app.content.interfaces import INameFromTitle
+class INameFromPersonNames(INameFromTitle):
+    def title():
+        """Return a processed title"""
+
+class NameFromPersonNames(object):
+    implements(INameFromPersonNames)
+    
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def title(self):
+        return self.title
+
 class IExhibition(form.Schema):
-
-    exhibitionsDetails_exhibition_altTitle = ListField(title=_(u'Alt. Title'),
-        value_type=DictRow(title=_(u'Alt. Title'), schema=IAltTitle),
-        required=False)
-    form.widget(exhibitionsDetails_exhibition_altTitle=DataGridFieldFactory)
-    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_altTitle')
-
-    start_date = schema.Datetime(
-        title=_(u'label_event_start', default=u'Event Starts'),
-        required=False
-    )
-    dexteritytextindexer.searchable('start_date')
-    form.widget(start_date=DatetimeFieldWidget)
-
-    end_date = schema.Datetime(
-        title=_(u'label_event_end' ,default=u'Event Ends'),
-        required=False
-    )
-    dexteritytextindexer.searchable('end_date')
-    form.widget(end_date=DatetimeFieldWidget)
     
     text = RichText(
         title=_(u"Body"),
@@ -103,50 +101,56 @@ class IExhibition(form.Schema):
     # Exhibitions details   #
     # # # # # # # # # # # # #
     model.fieldset('exhibitions_details', label=_(u'Exhibitions details'), 
-        fields=['exhibitionsDetails_exhibition_startDate', 'exhibitionsDetails_exhibition_endDate',
+        fields=['title', 'start_date', 'end_date', 'exhibitionsDetails_exhibition_altTitle',
+                'exhibitionsDetails_exhibition_startDate', 'exhibitionsDetails_exhibition_endDate',
                 'exhibitionsDetails_exhibition_notes', 'exhibitionsDetails_organizingInstitutions',
-                'exhibitionsDetails_organizingInstitution', 'exhibitionsDetails_itinerary']
+                'exhibitionsDetails_itinerary']
     )
 
-    # Exhibition
-    """exhibitionsDetails_exhibition_title = schema.TextLine(
+    title = schema.TextLine(
         title=_(u'Title'),
+        required=True
+    )
+
+    exhibitionsDetails_exhibition_altTitle = ListField(title=_(u'Alt. Title'),
+        value_type=DictRow(title=_(u'Alt. Title'), schema=IAltTitle),
+        required=False)
+    form.widget(exhibitionsDetails_exhibition_altTitle=BlockDataGridFieldFactory)
+    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_altTitle')
+
+    start_date = schema.Datetime(
+        title=_(u'label_event_start', default=u'Event Starts'),
         required=False
     )
-    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_title')"""
+    dexteritytextindexer.searchable('start_date')
+    form.widget(start_date=DatetimeFieldWidget)
 
-    
+    end_date = schema.Datetime(
+        title=_(u'label_event_end' ,default=u'Event Ends'),
+        required=False
+    )
+    dexteritytextindexer.searchable('end_date')
+    form.widget(end_date=DatetimeFieldWidget)
+
+    # Exhibition
 
     exhibitionsDetails_exhibition_startDate = schema.TextLine(
         title=_(u'Start date'),
         required=False
     )
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_startDate')
-    #form.widget(exhibitionsDetails_exhibition_startDate=DatetimeFieldWidget)
 
     exhibitionsDetails_exhibition_endDate = schema.TextLine(
         title=_(u'End date'),
         required=False
     )
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_endDate')
-    #form.widget(exhibitionsDetails_exhibition_endDate=DatetimeFieldWidget)
-
-    exhibitionsDetails_exhibition_notes = schema.TextLine(
-        title=_(u'Notes'),
-        required=False
-    )
+   
+    exhibitionsDetails_exhibition_notes = ListField(title=_(u'Notes'),
+        value_type=DictRow(title=_(u'Notes'), schema=INotes),
+        required=False)
+    form.widget(exhibitionsDetails_exhibition_notes=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_notes')
-
-    # New organising institutions field
-    exhibitionsDetails_organizingInstitution = RelationList(
-        title=_(u'Organizing institutions'),
-        default=[],
-        value_type=RelationChoice(
-            title=u"Related",
-            source=ObjPathSourceBinder()
-        ),
-        required=False
-    )
 
     # Organizing institutions
     exhibitionsDetails_organizingInstitutions = ListField(title=_(u'Organizing institutions'),
@@ -159,7 +163,7 @@ class IExhibition(form.Schema):
     exhibitionsDetails_itinerary = ListField(title=_(u'Itinerary'),
         value_type=DictRow(title=_(u'Itinerary'), schema=IItinerary),
         required=False)
-    form.widget(exhibitionsDetails_itinerary=DataGridFieldFactory)
+    form.widget(exhibitionsDetails_itinerary=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('exhibitionsDetails_itinerary')
 
 
@@ -182,23 +186,13 @@ class IExhibition(form.Schema):
     # # # # # # # # # # #
 
     model.fieldset('linked_objects', label=_(u'Linked Objects'), 
-        fields=['linkedObjects_linkedObjects', 'linkedObjects_relatedItems']
+        fields=['linkedObjects_linkedObjects']
     )
 
-    linkedObjects_relatedItems = RelationList(
-        title=_(u'label_related_items', default=u'Related Items'),
-        default=[],
-        value_type=RelationChoice(
-            title=u"Related",
-            source=ObjPathSourceBinder(portal_type='Object')
-        ),
-        required=False
-    )
-
-    linkedObjects_linkedObjects = ListField(title=_(u'Linked Objects'),
-        value_type=DictRow(title=_(u'Linked Objects'), schema=ILinkedObjects),
+    linkedObjects_linkedObjects = ListField(title=_(u'label_related_items', default=u'Related Items'),
+        value_type=DictRow(title=_(u'label_related_items', default=u'Linked Objects'), schema=ILinkedObjects),
         required=False)
-    form.widget(linkedObjects_linkedObjects=DataGridFieldFactory)
+    form.widget(linkedObjects_linkedObjects=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('linkedObjects_linkedObjects')
 
 
@@ -220,7 +214,7 @@ class AddForm(add.DefaultAddForm):
         super(AddForm, self).update()
         for group in self.groups:
             for widget in group.widgets.values():
-                if widget.__name__ in ['linkedObjects_linkedObjects', 'exhibitionsDetails_itinerary', 'exhibitionsDetails_organizingInstitutions']:
+                if IDataGridField.providedBy(widget):
                     widget.auto_append = False
                     widget.allow_reorder = True
                 alsoProvides(widget, IFormWidget)
@@ -236,7 +230,7 @@ class EditForm(edit.DefaultEditForm):
         super(EditForm, self).update()
         for group in self.groups:
             for widget in group.widgets.values():
-                if widget.__name__ in ['linkedObjects_linkedObjects', 'exhibitionsDetails_itinerary', 'exhibitionsDetails_organizingInstitutions']:
+                if IDataGridField.providedBy(widget):
                     widget.auto_append = False
                     widget.allow_reorder = True
                 alsoProvides(widget, IFormWidget)

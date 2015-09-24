@@ -1114,6 +1114,10 @@ msgid "Exhibition name"
 msgstr "Tentoonstellingsnaam"
 
 #: ../exhibition.py
+msgid "Exhibition details"
+msgstr "Tentoonstelling"
+
+#: ../exhibition.py
 msgid "to"
 msgstr "t/m"
 
@@ -1203,16 +1207,16 @@ msgstr "Telefoon"
 
 #: ../exhibition.py
 msgid "Exhibitions details"
-msgstr "Tentoonstelling"
+msgstr "Tentoonstellingsgegevens"
 
 
 #: ../exhibition.py
 msgid "label_event_start"
-msgstr "Aanvang"
+msgstr "Begindatum"
 
 #: ../exhibition.py
 msgid "label_event_end"
-msgstr "Einde"
+msgstr "Einddatum"
 
 #: ../exhibition.py
 msgid "Article"

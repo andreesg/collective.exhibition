@@ -3,6 +3,8 @@
 
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 from collective.exhibition import MessageFactory as _
+from collective.object.utils.vocabularies import ObjectVocabulary
+
 # # # # # # # # # # # # # #
 # Vocabularies            #
 # # # # # # # # # # # # # #
@@ -31,3 +33,5 @@ def _createPriorityVocabulary():
 
 priority_vocabulary = SimpleVocabulary(list(_createPriorityVocabulary()))
 insurance_type_vocabulary = SimpleVocabulary(list(_createInsuranceTypeVocabulary()))
+
+PlaceVocabularyFactory = ObjectVocabulary('exhibitionsDetails_itinerary_place')

@@ -34,46 +34,76 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
     
-    <div id="parent-fieldname-text">
-      <div id="body-text">
-        <p tal:condition="context/text" tal:content="structure python:context.text.output_relative_to(context.view)" ></p>
-      </div>
+    <tal:permissions
+      tal:define="user_admin view/checkUserPermission;
+                  fieldset_restriction python:request.get('fieldset', None);"
+    >
+    <tal:notadmin tal:condition="not:user_admin">
+      <div id="parent-fieldname-text">
+        <div id="body-text">
+          <p tal:condition="context/text" tal:content="structure python:context.text.output_relative_to(context.view)" ></p>
+        </div>
 
-    <div class="container object-container">
-      <div class="object-fieldset">
-        <fieldset tal:repeat="group view/groups"
-                  tal:attributes="id python:''.join((group.prefix, 'groups.', group.__name__)).replace('.', '-')">
+        <div class="container object-container">
+          <div class="object-fieldset">
             
-            <tal:block tal:repeat="widget group/widgets/values">
+          </div>
+        </div>
+      </div>
+  </tal:notadmin>
 
-                <tal:contentfield tal:condition="widget/value">
-                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 object-label" style="padding-left:0px;" tal:condition="python:widget.__name__ not in ('object_tags')">
-                    <span tal:content="widget/label"></span>
-                  </div>
+  <tal:admin tal:condition="user_admin">
+    <div class="template-edit">
+      <div id="content-core">
+    
+        <form class="enableFormTabbing">
 
-                  <tal:notdimension tal:condition="python:widget.__name__ not in ['dimensions', 'techniques', 'materials', 'keywords']">
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 object-value" tal:condition="python:widget.__name__ not in ('object_tags')">
-                      
-                      <!--<p tal:condition="python:widget.__name__ in ['technique', 'artist', 'material', 'object_type', 'object_category', 'publisher', 'author']"><a tal:replace="structure python:view.getSearchableValue(widget.__name__, widget.value)"></a></p>-->
+        <tal:block tal:repeat="group view/groups">
+       
+        <fieldset
+          tal:define="normalizeString nocall:context/@@plone/normalizeString;
+                      fieldset_label group/label;
+                      fieldset_name group/__name__|group/label/default|fieldset_label;
+                      fieldset_text python:normalizeString(fieldset_name);
+                      fieldset_name python:normalizeString(fieldset_name);"
 
-                      <p tal:content="widget/value"></p>
-                      
-                    </div>
-                  </tal:notdimension>
+            tal:attributes="id string:fieldset-${fieldset_name};
+                          class string:formPanel;">
+              
+                <legend tal:condition="fieldset_label"
+                        tal:attributes="id string:fieldset-${fieldset_name}"
+                        tal:content="fieldset_label">Form name</legend>
 
-                  <tal:isdimension tal:condition="python:widget.__name__ in ['dimensions', 'techniques', 'materials', 'keywords']">
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 object-value">
-                      <p><tal:widget tal:replace="structure widget/@@ploneform-render-widget"/></p>
-                  </div>
-                  </tal:isdimension>
+                <p i18n:translate=""
+                   tal:define="group_description group/description|nothing"
+                   tal:condition="group_description"
+                   tal:content="structure group_description">
+                    Description
+                </p>
 
-                </tal:contentfield>
-            </tal:block>
+                <tal:block tal:define="errors group/widgets/errors"
+                           tal:condition="errors"
+                           tal:repeat="error errors">
+                    <div class="field error"
+                        tal:condition="not:nocall:error/widget"
+                        tal:content="structure error/render"
+                        />
+                </tal:block>
+
+                <tal:restriction tal:condition="python: fieldset_name == 'exhibitions_details'">
+                  <tal metal:use-macro="view/context/@@collective.exhibition.fieldsetmacro/private_view" />
+                </tal:restriction>
         </fieldset>
+      
+      </tal:block>
+
+        </form>
       </div>
     </div>
-    </div>
+  </tal:admin>
+  </tal:permissions>
   </metal:content-core>
 </metal:main>
+
 </body>
 </html>

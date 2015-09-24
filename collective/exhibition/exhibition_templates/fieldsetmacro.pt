@@ -1,5 +1,48 @@
 <!-- Secondary fieldsets -->
   
+<div metal:define-macro="private_view">
+
+  <tal:exhibitions_details tal:condition='python: fieldset_text == "exhibitions_details"'
+    tal:define='widgets group/widgets'>
+
+    <!-- Exhibitions details -->
+    <div class="row no-padding">
+        <h2 class="page-header" i18n:translate="">Tentoonstelling</h2>
+        
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/title/@@ploneform-render-widget"/>
+        </div>
+
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_altTitle/@@ploneform-render-widget"/>
+        </div>
+
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/start_date/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/end_date/@@ploneform-render-widget"/>
+        </div>
+
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_notes/@@ploneform-render-widget"/>
+        </div>
+
+
+        <h2 class="page-header" i18n:translate="">Organiserende instelling</h2>
+
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_organizingInstitutions/@@ploneform-render-widget"/>
+        </div>
+
+        <h2 class="page-header" i18n:translate="">Agenda</h2>
+        <div class="form-horizontal gridfield table-responsive">
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_itinerary/@@ploneform-render-widget"/>
+        </div>
+
+    </div>
+  </tal:exhibitions_details>
+
+</div>
+
 <div metal:define-macro="test">
 
   <tal:exhibitions_details tal:condition='python: fieldset_text == "exhibitions_details"'
@@ -7,24 +50,24 @@
 
     <!-- Exhibitions details -->
     <div class="row no-padding">
-        <!--<h2 class="page-header" i18n:translate="">Exhibition</h2>-->
-
-        <!--<div class="form-horizontal">
-          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_title/@@ploneform-render-widget"/>
-        </div>-->
+        <h2 class="page-header" i18n:translate="">Exhibition</h2>
         
-        <!--<div class="form-horizontal gridfield show-label hide-th">
-          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_altTitle/@@ploneform-render-widget"/>
-        </div>-->
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/title/@@ploneform-render-widget"/>
+        </div>
 
-        <!--<div class="form-horizontal">
-          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_startDate/@@ploneform-render-widget"/>
-          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_endDate/@@ploneform-render-widget"/>
-        </div>-->
-
-        <h2 class="page-header" i18n:translate="">Organizing institutions</h2>
         <div class="form-horizontal gridfield">
-          <tal:widget tal:replace="structure widgets/exhibitionsDetails_organizingInstitution/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_altTitle/@@ploneform-render-widget"/>
+        </div>
+
+        <div class="form-horizontal">
+          <tal:widget tal:replace="structure widgets/start_date/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/end_date/@@ploneform-render-widget"/>
+          
+        </div>
+        
+        <div class="form-horizontal gridfield">
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_notes/@@ploneform-render-widget"/>
         </div>
 
         <h2 class="page-header" i18n:translate="">Organizing institutions</h2>
@@ -59,13 +102,8 @@
     <div class="row no-padding">
         <h2 class="page-header" i18n:translate="">Linked Objects</h2>
         <div class="form-horizontal gridfield">
-          <tal:widget tal:replace="structure widgets/linkedObjects_relatedItems/@@ploneform-render-widget"/>
-        </div>
-
-        <!--<h2 class="page-header" i18n:translate="">Linked Objects</h2>
-        <div class="form-horizontal gridfield table-responsive">
           <tal:widget tal:replace="structure widgets/linkedObjects_linkedObjects/@@ploneform-render-widget"/>
-        </div>-->
+        </div>
     </div>
   </tal:linked_objects>
 
