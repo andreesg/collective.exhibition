@@ -103,7 +103,7 @@ class IExhibition(form.Schema):
     model.fieldset('exhibitions_details', label=_(u'Exhibitions details'), 
         fields=['title', 'start_date', 'end_date', 'exhibitionsDetails_exhibition_altTitle',
                 'exhibitionsDetails_exhibition_startDate', 'exhibitionsDetails_exhibition_endDate',
-                'exhibitionsDetails_exhibition_notes', 'exhibitionsDetails_organizingInstitutions',
+                'exhibitionsDetails_exhibitions_notes', 'exhibitionsDetails_organizingInstitutions',
                 'exhibitionsDetails_itinerary']
     )
 
@@ -146,10 +146,10 @@ class IExhibition(form.Schema):
     )
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_endDate')
    
-    exhibitionsDetails_exhibition_notes = ListField(title=_(u'Notes'),
+    exhibitionsDetails_exhibitions_notes = ListField(title=_(u'Notes'),
         value_type=DictRow(title=_(u'Notes'), schema=INotes),
         required=False)
-    form.widget(exhibitionsDetails_exhibition_notes=BlockDataGridFieldFactory)
+    form.widget(exhibitionsDetails_exhibitions_notes=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_notes')
 
     # Organizing institutions

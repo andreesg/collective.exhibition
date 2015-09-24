@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-horizontal gridfield">
-          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_notes/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibitions_notes/@@ploneform-render-widget"/>
         </div>
 
 
@@ -67,7 +67,7 @@
         </div>
         
         <div class="form-horizontal gridfield">
-          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibition_notes/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure widgets/exhibitionsDetails_exhibitions_notes/@@ploneform-render-widget"/>
         </div>
 
         <h2 class="page-header" i18n:translate="">Organizing institutions</h2>
