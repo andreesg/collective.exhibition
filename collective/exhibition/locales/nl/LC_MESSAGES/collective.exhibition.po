@@ -1220,7 +1220,7 @@ msgstr "Einddatum"
 
 #: ../exhibition.py
 msgid "Article"
-msgstr "Lidword"
+msgstr "Lidwoord"
 
 #: ../exhibition.py
 msgid "Linked Objects"

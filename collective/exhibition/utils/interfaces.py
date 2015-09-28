@@ -109,13 +109,13 @@ class IDocumentationDocumentation(Interface):
 
     #author = schema.TextLine(title=_(u'Author'), required=False)
     pageMark = schema.TextLine(title=_(u'Page mark'), required=False)
-    shelfMark = schema.TextLine(title=_(u'Shelf mark'), required=False)
+    #shelfMark = schema.TextLine(title=_(u'Shelf mark'), required=False)
     notes = schema.Text(title=_(u'Notes'), required=False)
 
 ## Linked Objects
 class ILinkedObjects(Interface):
     objectNumber = RelationList(
-        title=_(u'Title'),
+        title=_(u'Object number'),
         default=[],
         missing_value=[],
         value_type=RelationChoice(

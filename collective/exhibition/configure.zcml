@@ -34,7 +34,7 @@
       />
     
   <browser:page
-        name="view"
+        name="contents_view"
         for="collective.exhibition.exhibition.IExhibition"
         class="collective.exhibition.exhibition.ExhibitionView"
         template="exhibition_templates/view.pt"
