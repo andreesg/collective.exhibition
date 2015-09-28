@@ -40,6 +40,7 @@
         template="exhibition_templates/view.pt"
         permission="zope2.View"
         title="View Content"
+        menu="plone_displayviews"
         />
 
 
