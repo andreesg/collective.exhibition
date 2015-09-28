@@ -82,7 +82,7 @@ class NameFromPersonNames(object):
 
     @property
     def title(self):
-        return self.title
+        return self.context.title
 
 class IExhibition(form.Schema):
     

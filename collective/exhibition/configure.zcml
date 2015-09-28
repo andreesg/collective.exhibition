@@ -39,6 +39,7 @@
         class="collective.exhibition.exhibition.ExhibitionView"
         template="exhibition_templates/view.pt"
         permission="zope2.View"
+        title="View Content"
         />
 
 
