@@ -18,8 +18,9 @@
         </div>
 
         <div class="form-horizontal">
-          <tal:widget tal:replace="structure widgets/start_date/@@ploneform-render-widget"/>
-          <tal:widget tal:replace="structure widgets/end_date/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure view/widgets/IEventBasic.start/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure view/widgets/IEventBasic.end/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure view/widgets/IEventBasic.whole_day/@@ploneform-render-widget"/>
         </div>
 
         <div class="form-horizontal gridfield">
@@ -61,9 +62,9 @@
         </div>
 
         <div class="form-horizontal">
-          <tal:widget tal:replace="structure widgets/start_date/@@ploneform-render-widget"/>
-          <tal:widget tal:replace="structure widgets/end_date/@@ploneform-render-widget"/>
-          
+          <tal:widget tal:replace="structure view/widgets/IEventBasic.start/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure view/widgets/IEventBasic.end/@@ploneform-render-widget"/>
+          <tal:widget tal:replace="structure view/widgets/IEventBasic.whole_day/@@ploneform-render-widget"/>
         </div>
         
         <div class="form-horizontal gridfield">

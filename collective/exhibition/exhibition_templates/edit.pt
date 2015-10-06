@@ -99,7 +99,11 @@
                                   <tal:widgets repeat="widget view/widgets/values">
                                       <metal:field-slot define-slot="field">
                                           <metal:field define-macro="field">
+
+                                          <tal:restriction tal:condition="python: widget.__name__ not in ['IEventBasic.start','IEventBasic.end', 'IEventBasic.whole_day', 'IEventBasic.open_end']">
                                               <tal:widget tal:replace="structure widget/@@ploneform-render-widget"/>
+                                          </tal:restriction>
+
                                           </metal:field>
                                       </metal:field-slot>
                                   </tal:widgets>
@@ -137,6 +141,7 @@
                                             />
                                     </tal:block>
                                     
+
                                     <tal metal:use-macro="view/context/@@collective.exhibition.fieldsetmacro/test" />
 
                                   </fieldset>

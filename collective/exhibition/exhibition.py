@@ -101,7 +101,7 @@ class IExhibition(form.Schema):
     # Exhibitions details   #
     # # # # # # # # # # # # #
     model.fieldset('exhibitions_details', label=_(u'Exhibitions details'), 
-        fields=['title', 'start_date', 'end_date', 'exhibitionsDetails_exhibition_altTitle',
+        fields=['title', 'exhibitionsDetails_exhibition_altTitle',
                 'exhibitionsDetails_exhibition_startDate', 'exhibitionsDetails_exhibition_endDate',
                 'exhibitionsDetails_exhibitions_notes', 'exhibitionsDetails_organizingInstitutions',
                 'exhibitionsDetails_itinerary']
@@ -117,20 +117,6 @@ class IExhibition(form.Schema):
         required=False)
     form.widget(exhibitionsDetails_exhibition_altTitle=BlockDataGridFieldFactory)
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_altTitle')
-
-    start_date = schema.Datetime(
-        title=_(u'label_event_start', default=u'Event Starts'),
-        required=False
-    )
-    dexteritytextindexer.searchable('start_date')
-    form.widget(start_date=DatetimeFieldWidget)
-
-    end_date = schema.Datetime(
-        title=_(u'label_event_end' ,default=u'Event Ends'),
-        required=False
-    )
-    dexteritytextindexer.searchable('end_date')
-    form.widget(end_date=DatetimeFieldWidget)
 
     # Exhibition
 
@@ -150,7 +136,7 @@ class IExhibition(form.Schema):
         value_type=DictRow(title=_(u'Notes'), schema=INotes),
         required=False)
     form.widget(exhibitionsDetails_exhibitions_notes=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_notes')
+    dexteritytextindexer.searchable('exhibitionsDetails_exhibitions_notes')
 
     # Organizing institutions
     exhibitionsDetails_organizingInstitutions = ListField(title=_(u'Organizing institutions'),
@@ -233,6 +219,10 @@ class EditForm(edit.DefaultEditForm):
                 if IDataGridField.providedBy(widget):
                     widget.auto_append = False
                     widget.allow_reorder = True
+                alsoProvides(widget, IFormWidget)
+
+        for widget in self.widgets.values():
+            if widget.__name__ in ['IEventBasic.start', 'IEventBasic.end', 'IEventBasic.whole_day']:
                 alsoProvides(widget, IFormWidget)
 
 
