@@ -88,7 +88,9 @@
                                   <tal:widgets repeat="widget view/widgets/values">
                                       <metal:field-slot define-slot="field">
                                           <metal:field define-macro="field">
+                                              <tal:restriction tal:condition="python: widget.__name__ not in ['IEventBasic.start','IEventBasic.end', 'IEventBasic.whole_day', 'IEventBasic.open_end']">
                                               <tal:widget tal:replace="structure widget/@@ploneform-render-widget"/>
+                                          </tal:restriction>
                                           </metal:field>
                                       </metal:field-slot>
                                   </tal:widgets>
@@ -104,6 +106,7 @@
                                                   class string:kssattr-fieldset-${fieldset_name};
                                                   data-fieldset fieldset_name">
 
+                                      <tal:group_restriction tal:condition="python: fieldset_text != 'dates'">
                                       <legend tal:define="form_name group/label"
                                               tal:condition="form_name"
                                               tal:attributes="id string:fieldsetlegend-${repeat/group/index}"
@@ -121,11 +124,12 @@
                                                  tal:repeat="error errors">
                                           <div class="field error"
                                               tal:condition="not:nocall:error/widget"
-                                              tal:content="structure error/render"
+                                              tal:content="error"
                                               />
                                       </tal:block>
                                       
                                       <tal metal:use-macro="view/context/@@collective.exhibition.fieldsetmacro/test" />
+                                    </tal:group_restriction>
 
                               </fieldset>
                         </tal:block>

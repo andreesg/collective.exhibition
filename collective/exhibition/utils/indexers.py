@@ -23,3 +23,22 @@ def exhibitionsDetails_itinerary_place(object, **kw):
             return []
     except:
         return []
+
+@indexer(IExhibition)
+def end(object, **kw):
+    print "index end"
+    try:
+        if hasattr(object, 'end'):
+            return object.end
+    except:
+        return ""
+
+@indexer(IExhibition)
+def start(object, **kw):
+    print "index start" 
+    try:
+        if hasattr(object, 'start'):
+            return object.start
+    except:
+        return ""
+

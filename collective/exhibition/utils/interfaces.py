@@ -60,13 +60,6 @@ class IOrganizingInstitutions(Interface):
     )
     form.widget('name', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
-    #address = schema.TextLine(title=_(u'Address'), required=False)
-    #postalCode = schema.TextLine(title=_(u'Postal code'), required=False)
-    #place = schema.TextLine(title=_(u'label_place', default=u'Place'), required=False)
-    #country = schema.TextLine(title=_(u'Country'), required=False)
-    #telephone = schema.TextLine(title=_(u'Telephone'), required=False)
-    #fax = schema.TextLine(title=_(u'Fax'), required=False)
-    #linkref = schema.TextLine(title=_(u'Reference'), required=False, default=u'')
 
 class IItinerary(Interface):
     startDate = schema.TextLine(title=_(u'Start date'), required=False)
@@ -99,6 +92,7 @@ class IDocumentationDocumentation(Interface):
     title = RelationList(
         title=_(u'Title'),
         default=[],
+        missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
             source=ObjPathSourceBinder()
@@ -107,9 +101,7 @@ class IDocumentationDocumentation(Interface):
     )
     form.widget('title', SimpleRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
-    #author = schema.TextLine(title=_(u'Author'), required=False)
     pageMark = schema.TextLine(title=_(u'Page mark'), required=False)
-    #shelfMark = schema.TextLine(title=_(u'Shelf mark'), required=False)
     notes = schema.Text(title=_(u'Notes'), required=False)
 
 ## Linked Objects

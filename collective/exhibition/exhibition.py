@@ -60,7 +60,7 @@ from .utils.vocabularies import *
 from .utils.interfaces import *
 from .utils.views import *
 
-from collective.object.utils.widgets import AjaxSingleSelectFieldWidget
+from collective.object.utils.widgets import AjaxSingleSelectFieldWidget, ExtendedRelatedItemsFieldWidget
 from collective.z3cform.datagridfield.interfaces import IDataGridField
 
 # # # # # # # # # # # # #
@@ -102,8 +102,7 @@ class IExhibition(form.Schema):
     # # # # # # # # # # # # #
     model.fieldset('exhibitions_details', label=_(u'Exhibitions details'), 
         fields=['title', 'exhibitionsDetails_exhibition_altTitle',
-                'exhibitionsDetails_exhibition_startDate', 'exhibitionsDetails_exhibition_endDate',
-                'exhibitionsDetails_exhibitions_notes', 'exhibitionsDetails_organizingInstitutions',
+                'exhibitionsDetails_exhibitions_notes', 'exhibitionsDetails_organizingInstitution',
                 'exhibitionsDetails_itinerary']
     )
 
@@ -119,18 +118,6 @@ class IExhibition(form.Schema):
     dexteritytextindexer.searchable('exhibitionsDetails_exhibition_altTitle')
 
     # Exhibition
-
-    exhibitionsDetails_exhibition_startDate = schema.TextLine(
-        title=_(u'Start date'),
-        required=False
-    )
-    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_startDate')
-
-    exhibitionsDetails_exhibition_endDate = schema.TextLine(
-        title=_(u'End date'),
-        required=False
-    )
-    dexteritytextindexer.searchable('exhibitionsDetails_exhibition_endDate')
    
     exhibitionsDetails_exhibitions_notes = ListField(title=_(u'Notes'),
         value_type=DictRow(title=_(u'Notes'), schema=INotes),
@@ -139,11 +126,17 @@ class IExhibition(form.Schema):
     dexteritytextindexer.searchable('exhibitionsDetails_exhibitions_notes')
 
     # Organizing institutions
-    exhibitionsDetails_organizingInstitutions = ListField(title=_(u'Organizing institutions'),
-        value_type=DictRow(title=_(u'Organizing institutions'), schema=IOrganizingInstitutions),
-        required=False)
-    form.widget(exhibitionsDetails_organizingInstitutions=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('exhibitionsDetails_organizingInstitutions')
+    exhibitionsDetails_organizingInstitution = RelationList(
+        title=_(u'Name'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+        ),
+        required=False
+    )
+    form.widget('exhibitionsDetails_organizingInstitution', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
     # Itinerary
     exhibitionsDetails_itinerary = ListField(title=_(u'Itinerary'),
@@ -172,14 +165,20 @@ class IExhibition(form.Schema):
     # # # # # # # # # # #
 
     model.fieldset('linked_objects', label=_(u'Linked Objects'), 
-        fields=['linkedObjects_linkedObjects']
+        fields=['linkedObjects_linkedobjects']
     )
 
-    linkedObjects_linkedObjects = ListField(title=_(u'label_related_items', default=u'Related Items'),
-        value_type=DictRow(title=_(u'label_related_items', default=u'Linked Objects'), schema=ILinkedObjects),
-        required=False)
-    form.widget(linkedObjects_linkedObjects=BlockDataGridFieldFactory)
-    dexteritytextindexer.searchable('linkedObjects_linkedObjects')
+    linkedObjects_linkedobjects = RelationList(
+        title=_(u'Object number'),
+        default=[],
+        missing_value=[],
+        value_type=RelationChoice(
+            title=u"Related",
+            source=ObjPathSourceBinder(portal_type="Object")
+        ),
+        required=False
+    )
+    form.widget('linkedObjects_linkedobjects', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
 
 # # # # # # # # # # # # # #
@@ -203,6 +202,10 @@ class AddForm(add.DefaultAddForm):
                 if IDataGridField.providedBy(widget):
                     widget.auto_append = False
                     widget.allow_reorder = True
+                alsoProvides(widget, IFormWidget)
+
+        for widget in self.widgets.values():
+            if widget.__name__ in ['IEventBasic.start', 'IEventBasic.end', 'IEventBasic.whole_day']:
                 alsoProvides(widget, IFormWidget)
 
 class AddView(add.DefaultAddView):

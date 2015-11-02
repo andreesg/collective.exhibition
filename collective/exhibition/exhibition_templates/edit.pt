@@ -121,29 +121,31 @@
                                                 class string:kssattr-fieldset-${fieldset_name};
                                                 data-fieldset fieldset_name">
                                     
-                                    <legend tal:condition="fieldset_label"
-                                            tal:attributes="id string:fieldsetlegend-${fieldset_name}"
-                                            tal:content="fieldset_label">Form name</legend>
+                                    <tal:group_restriction tal:condition="python: fieldset_text != 'dates'">
+                                      <legend tal:condition="fieldset_label"
+                                              tal:attributes="id string:fieldsetlegend-${fieldset_name}"
+                                              tal:content="fieldset_label">Form name</legend>
 
-                                    <p i18n:translate=""
-                                       tal:define="group_description group/description|nothing"
-                                       tal:condition="group_description"
-                                       tal:content="structure group_description">
-                                        Description
-                                    </p>
+                                      <p i18n:translate=""
+                                         tal:define="group_description group/description|nothing"
+                                         tal:condition="group_description"
+                                         tal:content="structure group_description">
+                                          Description
+                                      </p>
 
-                                    <tal:block tal:define="errors group/widgets/errors"
-                                               tal:condition="errors"
-                                               tal:repeat="error errors">
-                                        <div class="field error"
-                                            tal:condition="not:nocall:error/widget"
-                                            tal:content="structure error/render"
-                                            />
-                                    </tal:block>
+                                      <tal:block tal:define="errors group/widgets/errors"
+                                                 tal:condition="errors"
+                                                 tal:repeat="error errors">
+                                          <div class="field error"
+                                              tal:condition="not:nocall:error/widget"
+                                              tal:content="structure error/render"
+                                              />
+                                      </tal:block>
                                     
 
+                                
                                     <tal metal:use-macro="view/context/@@collective.exhibition.fieldsetmacro/test" />
-
+                                    </tal:group_restriction>
                                   </fieldset>
                                 </tal:block>
 
