@@ -110,6 +110,7 @@ class IExhibition(form.Schema):
         title=_(u'Title'),
         required=True
     )
+    dexteritytextindexer.searchable('title')
 
     exhibitionsDetails_exhibition_altTitle = ListField(title=_(u'Alt. Title'),
         value_type=DictRow(title=_(u'Alt. Title'), schema=IAltTitle),
