@@ -97,7 +97,7 @@
   <adapter name="exhibitionsDetails_itinerary_place" factory=".utils.indexers.exhibitionsDetails_itinerary_place" />
   <adapter name="start" factory=".utils.indexers.start" />
   <adapter name="end" factory=".utils.indexers.end" />
-
+  <adapter name="exhibition_organiser" factory=".utils.indexers.exhibition_organiser" />
 
   <utility
     component=".utils.vocabularies.PlaceVocabularyFactory"

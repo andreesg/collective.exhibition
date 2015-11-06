@@ -4,6 +4,33 @@
 
 from plone.indexer.decorator import indexer
 from ..exhibition import IExhibition
+from z3c.relationfield.interfaces import IRelationList, IRelationValue
+
+@indexer(IExhibition)
+def exhibition_organiser(object, **kw):
+    try:
+        if hasattr(object, 'exhibitionsDetails_organizingInstitution'):
+            items = object.exhibitionsDetails_organizingInstitution
+            organisers = []
+            if items:
+                for item in items:
+                    if item['name']:
+                        organiser = item['name'][0]
+                        if IRelationValue.providedBy(organiser):
+                            organiser_obj = organiser.to_object
+                            title = getattr(organiser_obj, 'title', "")
+                            organisers.append(title)
+                        elif getattr(organiser, 'portal_type', "") == "PersonOrInstitution":
+                            title = getattr(organiser, 'title', "")
+                            organisers.append(title)
+                        else:
+                            continue
+
+            return "_".join(organisers)
+        else:
+            return ""
+    except:
+        return ""
 
 @indexer(IExhibition)
 def exhibitionsDetails_itinerary_place(object, **kw):
@@ -26,7 +53,6 @@ def exhibitionsDetails_itinerary_place(object, **kw):
 
 @indexer(IExhibition)
 def end(object, **kw):
-    print "index end"
     try:
         if hasattr(object, 'end'):
             return object.end
@@ -34,8 +60,7 @@ def end(object, **kw):
         return ""
 
 @indexer(IExhibition)
-def start(object, **kw):
-    print "index start" 
+def start(object, **kw): 
     try:
         if hasattr(object, 'start'):
             return object.start
