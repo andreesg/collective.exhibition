@@ -14,17 +14,15 @@ def exhibition_organiser(object, **kw):
             organisers = []
             if items:
                 for item in items:
-                    if item['name']:
-                        organiser = item['name'][0]
-                        if IRelationValue.providedBy(organiser):
-                            organiser_obj = organiser.to_object
-                            title = getattr(organiser_obj, 'title', "")
-                            organisers.append(title)
-                        elif getattr(organiser, 'portal_type', "") == "PersonOrInstitution":
-                            title = getattr(organiser, 'title', "")
-                            organisers.append(title)
-                        else:
-                            continue
+                    if IRelationValue.providedBy(item):
+                        organiser_obj = item.to_object
+                        title = getattr(organiser_obj, 'title', "")
+                        organisers.append(title)
+                    elif getattr(item, 'portal_type', "") == "PersonOrInstitution":
+                        title = getattr(item, 'title', "")
+                        organisers.append(title)
+                    else:
+                        continue
 
             return "_".join(organisers)
         else:
