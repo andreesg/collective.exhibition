@@ -107,10 +107,12 @@
     tal:define='widgets group/widgets'>
     <!-- Linked Objects -->
     <div class="row no-padding">
+      <div class="object-listing">
         <h2 class="page-header" i18n:translate="">Linked Objects</h2>
         <div class="form-horizontal">
           <tal:widget tal:content="structure view/getRelatedObjects"/>
         </div>
+      </div>
     </div>
   </tal:linked_objects>
 

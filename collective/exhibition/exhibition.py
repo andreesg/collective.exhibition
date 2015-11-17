@@ -170,10 +170,18 @@ class IExhibition(form.Schema):
     # # # # # # # # # # #
 
     model.fieldset('linked_objects', label=_(u'Linked Objects'), 
-        fields=['linkedObjects_linkedobjects']
+        fields=['linkedObjects_temp']
     )
 
-    linkedObjects_linkedobjects = RelationList(
+
+    linkedObjects_temp = schema.TextLine(
+        title=_(u'Object number'),
+        required=False,
+        default=u"",
+        missing_value=u""
+    )
+
+    """linkedObjects_linkedobjects = RelationList(
         title=_(u'Object number'),
         default=[],
         missing_value=[],
@@ -183,7 +191,7 @@ class IExhibition(form.Schema):
         ),
         required=False
     )
-    form.widget('linkedObjects_linkedobjects', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
+    form.widget('linkedObjects_linkedobjects', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')"""
 
 
 # # # # # # # # # # # # # #

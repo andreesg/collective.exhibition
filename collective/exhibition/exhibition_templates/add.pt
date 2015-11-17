@@ -106,7 +106,7 @@
                                                   class string:kssattr-fieldset-${fieldset_name};
                                                   data-fieldset fieldset_name">
 
-                                      <tal:group_restriction tal:condition="python: fieldset_text != 'dates'">
+                                      <tal:group_restriction tal:condition="python: fieldset_text not in ['dates', 'linked_objects']">
                                       <legend tal:define="form_name group/label"
                                               tal:condition="form_name"
                                               tal:attributes="id string:fieldsetlegend-${repeat/group/index}"
