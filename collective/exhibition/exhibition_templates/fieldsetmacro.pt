@@ -109,7 +109,7 @@
     <div class="row no-padding">
         <h2 class="page-header" i18n:translate="">Linked Objects</h2>
         <div class="form-horizontal">
-          <tal:widget tal:replace="structure widgets/linkedObjects_linkedobjects/@@ploneform-render-widget"/>
+          <tal:widget tal:content="structure view/getRelatedObjects"/>
         </div>
     </div>
   </tal:linked_objects>

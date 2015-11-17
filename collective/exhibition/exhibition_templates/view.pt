@@ -98,6 +98,7 @@
             tal:attributes="id string:fieldset-${fieldset_name};
                           class string:formPanel;">
               
+              <tal:rest tal:condition="python: fieldset_name not in ['dates']">
                 <legend tal:condition="fieldset_label"
                         tal:attributes="id string:fieldset-${fieldset_name}"
                         tal:content="fieldset_label">Form name</legend>
@@ -121,6 +122,7 @@
                 <tal:restriction tal:condition="python: fieldset_name == 'exhibitions_details'">
                   <tal metal:use-macro="view/context/@@collective.exhibition.fieldsetmacro/private_view" />
                 </tal:restriction>
+              </tal:rest>
         </fieldset>
       
       </tal:block>
