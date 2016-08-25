@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from collective.leadmedia.adapters import ICanContainMedia
+#from collective.leadmedia.adapters import ICanContainMedia
 from zope.component import getMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from collective.exhibition import MessageFactory as _
@@ -10,7 +10,7 @@ from plone.dexterity.browser.view import DefaultView
 
 from AccessControl import getSecurityManager
 from Products.CMFCore.permissions import ModifyPortalContent
-from plone.app.widgets.dx import AjaxSelectFieldWidget, AjaxSelectWidget, SelectWidget, DatetimeFieldWidget, IAjaxSelectWidget, RelatedItemsFieldWidget
+from plone.app.z3cform.widget import AjaxSelectFieldWidget, AjaxSelectWidget, SelectWidget, DatetimeFieldWidget, IAjaxSelectWidget, RelatedItemsFieldWidget
 from zope.interface import alsoProvides
 from .interfaces import IFormWidget
 from plone.dexterity.browser import add, edit

@@ -54,7 +54,7 @@ class IOrganizingInstitutions(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -70,7 +70,7 @@ class IItinerary(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type="PersonOrInstitution")
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -95,7 +95,7 @@ class IDocumentationDocumentation(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder()
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -112,7 +112,7 @@ class ILinkedObjects(Interface):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type="Object")
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )

@@ -4,12 +4,40 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="collective.exhibition">
+      i18n:domain="collective.personOrInstitution">
 
 <body>
 
+<metal:title fill-slot="content-title">
+      <metal:block define-macro="content-title">
+        <tal:definitions define="user_admin view/checkUserPermission;
+                                  object_number python: getattr(context, 'identification_identification_objectNumber', False)">
 
-<metal:main fill-slot="content-core">
+          <tal:admin_title tal:condition="user_admin">
+            <tal:with_number tal:condition="object_number">
+              <h1 class="documentFirstHeading" tal:content="python: object_number+ ' - ' +context.title">
+                 Generic KSS Title. Is rendered with class="documentFirstHeading".
+              </h1>
+            </tal:with_number>
+            
+            <tal:without_number tal:condition="not:object_number">
+              <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
+               Generic KSS Title. Is rendered with class="documentFirstHeading".
+              </h1>
+            </tal:without_number>
+          </tal:admin_title>
+
+          <tal:not_admin_title tal:condition="not:user_admin">
+            <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
+               Generic KSS Title. Is rendered with class="documentFirstHeading".
+            </h1>
+          </tal:not_admin_title>
+
+        </tal:definitions>
+      </metal:block>
+</metal:title>
+
+<metal:main fill-slot="content-core" >
   <metal:content-core define-macro="content-core">
     
     <tal:permissions
@@ -17,75 +45,43 @@
                   fieldset_restriction python:request.get('fieldset', None);"
     >
     <tal:notadmin tal:condition="not:user_admin">
-          <div id="parent-fieldname-text-dates" tal:condition="python: context.portal_type in ['Event', 'Exhibition']" tal:define="toLocalizedTime nocall:plone_view/toLocalizedTime;">
-            <!-- Event -->
-            <p>
-            
-            <tal:differentday tal:condition="python:not context.start_date.date() == context.end_date.date()" i18n:translate="event_when_differentday">
-              <abbr i18n:name="startdate">
-                <span tal:replace="python: toLocalizedTime(context.start_date.strftime('%d %B %Y'))">Start Date</span>
-                <tal:word i18n:translate="event_when_differentday_optional_word_between_date_and_time" />
-              </abbr>
-              to
-              <span i18n:name="linebreak" />
-              <abbr i18n:name="enddate">
-                <span tal:replace="python: toLocalizedTime(context.end_date.strftime('%d %B %Y'))">End Date</span>
-                <tal:word i18n:translate="event_when_differentday_optional_word_between_date_and_time" />
-              </abbr>
-              
-            </tal:differentday>
-
-            <tal:sameday tal:condition="python:context.start_date.date() == context.end_date.date()" i18n:translate="event_when_sameday">
-              <span tal:replace="python: toLocalizedTime(context.start_date.strftime('%d %B %Y'))" i18n:name="date">Start Date Time</span>
-              <span i18n:name="linebreak" />
-              ,
-              <abbr i18n:name="starttime">
-                <span tal:content="python: toLocalizedTime(context.start_date, time_only=1)">Start Time</span>
-              </abbr >
-              -
-              <abbr i18n:name="endtime">
-                 <span tal:content="python:toLocalizedTime(context.end_date, time_only=1)">End Time</span>
-              </abbr>
-
-            </tal:sameday>
-            </p>
-
+      <tal:eventsummary replace="structure context/@@event_summary"/>
+      <div id="parent-fieldname-text">
+        <div id="body-text-exhibition">
+          <p tal:condition="context/text" tal:content="structure python:context.text.output_relative_to(context)" ></p>
         </div>
 
-        <div id="parent-fieldname-text-details" tal:condition="python: context.portal_type == 'product'">
-          <!-- Product -->
-          <h2 tal:content="context/Title"></h2>
-          <p tal:content="context/Description"></p>
-        </div>
-
-        <div id="parent-fieldname-text"
-             tal:condition="context/text"
-              tal:content="structure python:context.text.output_relative_to(view.context)" />
-
-
-        <div id="content-view-portlets">
-          <div class="row">
-            <tal:block replace="structure provider:plonetheme.bootstrapModern.pagePortletManager"/>
+        <div class="container object-container">
+          <div class="object-fieldset row">
           </div>
-          
-          <div id="manage-portlets-fallbackwrapper" tal:condition="view/showManageButton">
-            <a class="managePortletsFallback"
-                      tal:define="portal context/@@plone_portal_state/portal;"
-                      tal:attributes="href string:${context/absolute_url}/@@manage-page-portlets">
-                      Manage portlets
-            </a>  
-          </div>
-
         </div>
-
+      </div>
   </tal:notadmin>
 
   <tal:admin tal:condition="user_admin">
+    
     <div class="template-edit">
       <div id="content-core">
-    
-        <form class="enableFormTabbing">
 
+        <div id="ajax-error-msg" class="alert alert-warning" role="alert"></div>
+    
+        <form data-pat-autotoc="levels: legend; section: fieldset; className: autotabs" class="rowlike enableUnloadProtection enableFormTabbing pat-autotoc autotabs;" id="form">
+        
+        <fieldset id="fieldset-default">
+          <legend 
+                  tal:attributes="id string:fieldsetlegend-default"
+                  tal:content="view/default_fieldset_label | nothing">Form name</legend>
+
+          <metal:define define-macro="widget_rendering">
+              <tal:widgets repeat="widget view/widgets/values">
+                  <metal:field-slot define-slot="field">
+                      <metal:field define-macro="field">
+                        <tal:widget tal:replace="structure widget/@@ploneform-render-widget" tal:condition="python: widget.__name__ not in ['text', 'IVersionable.changeNote']"/>
+                      </metal:field>
+                  </metal:field-slot>
+              </tal:widgets>
+          </metal:define>
+        </fieldset>
         <tal:block tal:repeat="group view/groups">
        
         <fieldset
@@ -98,7 +94,6 @@
             tal:attributes="id string:fieldset-${fieldset_name};
                           class string:formPanel;">
               
-              <tal:rest tal:condition="python: fieldset_name not in ['dates']">
                 <legend tal:condition="fieldset_label"
                         tal:attributes="id string:fieldset-${fieldset_name}"
                         tal:content="fieldset_label">Form name</legend>
@@ -116,13 +111,11 @@
                     <div class="field error"
                         tal:condition="not:nocall:error/widget"
                         tal:content="structure error/render"
-                        />
+                    />
                 </tal:block>
-
-                <tal:restriction tal:condition="python: fieldset_name == 'exhibitions_details'">
-                  <tal metal:use-macro="view/context/@@collective.exhibition.fieldsetmacro/private_view" />
-                </tal:restriction>
-              </tal:rest>
+                <tal:block define="view nocall:group">
+                    <metal:block use-macro="context/@@ploneform-macros/widget_rendering" />
+                </tal:block> 
         </fieldset>
       
       </tal:block>
@@ -137,3 +130,4 @@
 
 </body>
 </html>
+

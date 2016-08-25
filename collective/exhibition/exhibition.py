@@ -35,7 +35,7 @@ from collective.object.utils.source import ObjPathSourceBinder
 #
 # plone.app.widgets dependencies
 #
-from plone.app.widgets.dx import DatetimeFieldWidget, RelatedItemsFieldWidget
+from plone.app.z3cform.widget import DatetimeFieldWidget, RelatedItemsFieldWidget
 
 #
 # DataGridFields dependencies
@@ -137,7 +137,7 @@ class IExhibition(form.Schema):
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type='PersonOrInstitution')
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
@@ -170,28 +170,28 @@ class IExhibition(form.Schema):
     # # # # # # # # # # #
 
     model.fieldset('linked_objects', label=_(u'Linked Objects'), 
-        fields=['linkedObjects_temp']
+        fields=['linkedObjects_linkedobjects']
     )
 
 
-    linkedObjects_temp = schema.TextLine(
+    """linkedObjects_temp = schema.TextLine(
         title=_(u'Object number'),
         required=False,
         default=u"",
         missing_value=u""
-    )
+    )"""
 
-    """linkedObjects_linkedobjects = RelationList(
+    linkedObjects_linkedobjects = RelationList(
         title=_(u'Object number'),
         default=[],
         missing_value=[],
         value_type=RelationChoice(
             title=u"Related",
-            source=ObjPathSourceBinder(portal_type="Object")
+            vocabulary='collective.object.relateditems'
         ),
         required=False
     )
-    form.widget('linkedObjects_linkedobjects', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')"""
+    form.widget('linkedObjects_linkedobjects', ExtendedRelatedItemsFieldWidget, vocabulary='collective.object.relateditems')
 
 
 # # # # # # # # # # # # # #
